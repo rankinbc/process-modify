@@ -1,0 +1,12 @@
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.csprojResolveAssemblyReference.cache
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.Form1.resources
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.csproj.GenerateResource.Cache
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.AttachForm.resources
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.AddModAddress.resources
+c:\users\bxps\documents\visual studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\N64_RAM_modder3.ModAddressControl.resources
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\bin\Debug\ProcessModify.exe.config
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.Properties.Resources.resources
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\bin\Debug\ProcessModify.exe
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\bin\Debug\ProcessModify.pdb
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.exe
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.pdb
