@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
     public partial class AttachForm : Form
     {

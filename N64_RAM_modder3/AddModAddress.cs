@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
     public partial class AddModAddress : Form
     {

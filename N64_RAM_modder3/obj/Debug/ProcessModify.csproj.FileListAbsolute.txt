@@ -1,0 +1,6 @@
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\bin\Debug\ProcessModify.exe.config
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.exe
+C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.pdb
+C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\bin\Debug\ProcessModify.exe.config
+C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.exe
+C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.pdb

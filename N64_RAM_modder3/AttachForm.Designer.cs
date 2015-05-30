@@ -1,4 +1,4 @@
-﻿namespace N64_RAM_modder3
+﻿namespace ProcessModify
 {
     partial class AttachForm
     {

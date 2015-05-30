@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
    public class ModAddress
     {
@@ -28,6 +28,7 @@ namespace N64_RAM_modder3
             max = 255;
             value = 255;
         }
+
         public ModAddress(Int32 address,string name,double min,double max,double value,int type)
         {
             this.address = address;

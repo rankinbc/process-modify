@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
     public partial class ModAddressControl : UserControl
     {
@@ -18,7 +18,7 @@ namespace N64_RAM_modder3
         public static int size_y = 96;
 
 
-         public ModAddressControl(ModAddress modAddress)
+         public ModAddressControl(ModAddress modAddress, bool minimal)
          {
             InitializeComponent();
             this.modAddress = modAddress;
@@ -29,6 +29,14 @@ namespace N64_RAM_modder3
 
             AdjustScrollbar();
             UpdateBackgroundColor();
+
+             if (minimal)
+             {
+                 btn_automate.Visible = false;
+                 btn_tie.Visible = false;
+                 this.BorderStyle = BorderStyle.None;
+                 cb_locked.Checked = true;
+             }
         }
 
         private void UpdateBackgroundColor()
@@ -40,6 +48,19 @@ namespace N64_RAM_modder3
              else
                  this.BackColor = Color.Transparent;
          }
+
+        public void ChangeType(int type)
+        {
+            switch (modAddress.type)
+            {
+                case (int)ModAddress.Types.Byte: lbl_type.Text = "Byte"; break;
+                case (int)ModAddress.Types.Short: lbl_type.Text = "Short"; break;
+                case (int)ModAddress.Types.Float: lbl_type.Text = "Float"; break;
+                case (int)ModAddress.Types.Double: lbl_type.Text = "Double"; break;
+                default: lbl_type.Text = "ERROR"; break;
+            }
+         
+        }
 
 
         
@@ -126,6 +147,7 @@ namespace N64_RAM_modder3
         }
 
         public bool getIsActive() { return cb_locked.Checked; }
+        public void setIsActive(bool a) { cb_locked.Checked = a; }
 
         private void cb_locked_CheckedChanged(object sender, EventArgs e)
         {
@@ -171,6 +193,11 @@ namespace N64_RAM_modder3
             }
 
             
+        }
+
+        private void lbl_actual_value_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

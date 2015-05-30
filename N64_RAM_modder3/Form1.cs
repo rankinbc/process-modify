@@ -13,7 +13,8 @@ using System.Runtime.InteropServices;
 
 
 
-namespace N64_RAM_modder3
+
+namespace ProcessModify
 {
         
      
@@ -29,10 +30,13 @@ namespace N64_RAM_modder3
         MemoryModifier memoryModifier;
         List<ModAddress> modAddresses;
         List<ModAddressControl> modAddressControls;
+        HexEditForm hexEditForm;
 
         bool attachedToProcess = false;
         bool writingToProcess = false;
         bool displayActualValues = true;
+        bool varConversionsActive = false;
+       
 
 
         public Form1()
@@ -60,9 +64,28 @@ namespace N64_RAM_modder3
                 lbl_attached_status.ForeColor = Color.Green;
                 btn_toggle_writing_to_process.Enabled = true;
                 attachedToProcess = true;
+                varConversionsActive = true;
+                btn_open_hex.Enabled = true;
+                memoryModifier = new MemoryModifier(currentProcess);
+
+
+                updateTimer.Start();
             }
-            memoryModifier = new MemoryModifier(currentProcess);
-            updateTimer.Start();
+
+        }
+
+        private void btn_open_hex_Click(object sender, EventArgs e)
+        {
+           
+            if (lb_mod_addresses.SelectedIndex != -1)
+            {
+                hexEditForm = new HexEditForm(modAddresses[lb_mod_addresses.SelectedIndex].address, memoryModifier);
+            }
+            else
+            {
+                hexEditForm = new HexEditForm(0x00000, memoryModifier);
+            }
+            hexEditForm.Show();
         }
         private void ToggleWritingToProcess()
         {
@@ -84,7 +107,7 @@ namespace N64_RAM_modder3
         {
             modAddresses.Add(m);
 
-            ModAddressControl modAddressControl = new ModAddressControl(m);
+            ModAddressControl modAddressControl = new ModAddressControl(m, false);
 
             modAddressControl.Location = new Point(modAddressControl.Location.X, ModAddressControl.size_y * (modAddresses.Count - 1) + panel_mod_addresses.AutoScrollPosition.Y);
             modAddressControls.Add(modAddressControl);
@@ -125,11 +148,18 @@ namespace N64_RAM_modder3
      
         private void btn_add_address_Click(object sender, EventArgs e)
         {
-            Int32 address = int.Parse(tb_add_address.Text, System.Globalization.NumberStyles.HexNumber);  
-            int type = comboBox1.SelectedIndex;
-            ModAddress m = new ModAddress(address, type, tb_add_address_name.Text);
+            try
+            {
+                Int32 address = int.Parse(tb_add_address.Text, System.Globalization.NumberStyles.HexNumber);
+                int type = comboBox1.SelectedIndex;
+                ModAddress m = new ModAddress(address, type, tb_add_address_name.Text);
 
-            AddModAddress(m);
+                AddModAddress(m);
+            }
+            catch
+            {
+                MessageBox.Show("invalid memory address");
+            }
             
         }
 
@@ -174,6 +204,31 @@ namespace N64_RAM_modder3
                     }
                 }
             }
+
+            if (lb_mod_addresses.SelectedIndex != -1 && varConversionsActive)
+            {
+                UpdateVarConversions(modAddresses[lb_mod_addresses.SelectedIndex].address);
+            }
+
+
+           
+        }
+
+        private void UpdateVarConversions(Int32 address)
+        {
+            lbl_var_as_byte.Text = Convert.ToString((int)memoryModifier.ReadFromAddress(address, 1)[0]);
+
+            int i = BitConverter.ToInt16(memoryModifier.ReadFromAddress(address, 2), 0);
+            lbl_var_as_short.Text = i.ToString();
+
+            float f = BitConverter.ToSingle(memoryModifier.ReadFromAddress(address, 4), 0);
+            lbl_var_as_float.Text = f.ToString();
+
+            double d = BitConverter.ToDouble(memoryModifier.ReadFromAddress(address, 8), 0);
+            lbl_var_as_double.Text = d.ToString();
+
+
+      
         }
 
         private void menu_quit_Click(object sender, EventArgs e)
@@ -242,8 +297,17 @@ namespace N64_RAM_modder3
 
         private void lb_mod_addresses_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lb_mod_addresses.SelectedIndex != -1)
+            {
+                panel_mod_addresses.AutoScrollPosition = new Point(0, ModAddressControl.size_y * lb_mod_addresses.SelectedIndex);
+                lbl_var_name.Text = lb_mod_addresses.SelectedItem.ToString();
+                lbl_var_address.Text = modAddressControls[lb_mod_addresses.SelectedIndex].getModAddress().address.ToString("X");
+            }
+        }
 
-            panel_mod_addresses.AutoScrollPosition = new Point(0, ModAddressControl.size_y * lb_mod_addresses.SelectedIndex);
+        private void UpdateHexBox(Int32 start_address)
+        {
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -334,6 +398,13 @@ namespace N64_RAM_modder3
                 AttachToProcess();
             }
         }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+  
 
 
 

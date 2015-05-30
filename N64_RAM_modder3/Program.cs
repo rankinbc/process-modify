@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
     static class Program
     {

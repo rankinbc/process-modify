@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 
-namespace N64_RAM_modder3
+namespace ProcessModify
 {
     public class MemoryModifier
     {
@@ -27,38 +27,64 @@ namespace N64_RAM_modder3
         const int PROCESS_WRITE = 0x1F0FFF;
 
         Process process;
-        IntPtr processHandle; 
+        IntPtr processHandle;
+        bool successfulLoad;
+    
 
         public MemoryModifier(Process process)
         {
-            this.process = process;
-            processHandle = OpenProcess(PROCESS_WRITE, false, process.Id);
+            try
+            {
+                this.process = process;
+                processHandle = OpenProcess(PROCESS_WRITE, false, process.Id);
+                successfulLoad = true;
+            }
+            catch
+            {
+                successfulLoad = false;
+            }
+            
+    
         }
 
-        public void WriteToAddress(Int32 address, byte value)
+        public bool getSuccessfulLoad() { return successfulLoad; }
+
+        public void WriteToAddress(Int32 address, byte value) //need to add shorts and doubles
         {
-            int bytesWritten = 0;
-            byte[] buffer = new byte[1];
-            buffer[0] = value;
-            WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            if (successfulLoad)
+            {
+                int bytesWritten = 0;
+                byte[] buffer = new byte[1];
+                buffer[0] = value;
+                WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            }
         }
         public void WriteToAddress(Int32 address, float value)
         {
-            int bytesWritten = 0;
-            byte[] buffer = new byte[3]; 
-            buffer = BitConverter.GetBytes(value);
-            WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            if (successfulLoad)
+            {
+                int bytesWritten = 0;
+                byte[] buffer = new byte[3];
+                buffer = BitConverter.GetBytes(value);
+                WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            }
         }
         public byte[] ReadFromAddress(Int32 address, int bytes)
         {
-            IntPtr processHandle = OpenProcess(PROCESS_READ, false, process.Id);
+            if (successfulLoad)
+            {
+                IntPtr processHandle = OpenProcess(PROCESS_READ, false, process.Id);
 
-            int bytesRead = 0;
-            byte[] buffer = new byte[bytes];
-            ReadProcessMemory((int)processHandle,address, buffer, buffer.Length, ref bytesRead);
+                int bytesRead = 0;
+                byte[] buffer = new byte[bytes];
+                ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
 
-            return buffer;
+                return buffer;
+            }
+            else
+                return null;
         }
+
 
 
 

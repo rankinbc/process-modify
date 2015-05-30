@@ -1,4 +1,4 @@
-﻿namespace N64_RAM_modder3
+﻿namespace ProcessModify
 {
     partial class ModAddressControl
     {
@@ -157,12 +157,13 @@
             // lbl_actual_value
             // 
             this.lbl_actual_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actual_value.Location = new System.Drawing.Point(121, 77);
+            this.lbl_actual_value.Location = new System.Drawing.Point(119, 77);
             this.lbl_actual_value.Name = "lbl_actual_value";
             this.lbl_actual_value.Size = new System.Drawing.Size(163, 18);
             this.lbl_actual_value.TabIndex = 22;
             this.lbl_actual_value.Text = "255";
             this.lbl_actual_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_actual_value.Click += new System.EventHandler(this.lbl_actual_value_Click);
             // 
             // ModAddressControl
             // 
