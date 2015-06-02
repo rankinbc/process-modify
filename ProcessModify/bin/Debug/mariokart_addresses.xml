@@ -13,7 +13,7 @@
     <name>position_z</name>
     <min>0</min>
     <max>255</max>
-    <value>255</value>
+    <value>173.4</value>
     <type>2</type>
   </Address>
   <Address>
@@ -21,7 +21,7 @@
     <name>position_y</name>
     <min>-2500</min>
     <max>2500</max>
-    <value>1550.0000000000005</value>
+    <value>-550</value>
     <type>2</type>
   </Address>
   <Address>
@@ -97,11 +97,35 @@
     <type>2</type>
   </Address>
   <Address>
-    <address>10303020</address>
-    <name></name>
+    <address>10303064</address>
+    <name>kart_state</name>
+    <min>0</min>
+    <max>180</max>
+    <value>176.4</value>
+    <type>2</type>
+  </Address>
+  <Address>
+    <address>10303060</address>
+    <name>outline_thickness</name>
     <min>0</min>
     <max>255</max>
-    <value>147.89999999999998</value>
+    <value>255</value>
+    <type>0</type>
+  </Address>
+  <Address>
+    <address>10303065</address>
+    <name>black_smoke</name>
+    <min>0</min>
+    <max>255</max>
+    <value>255</value>
+    <type>0</type>
+  </Address>
+  <Address>
+    <address>10303060</address>
+    <name>sprite_static_amount</name>
+    <min>0</min>
+    <max>255</max>
+    <value>255</value>
     <type>0</type>
   </Address>
 </Addresses>
