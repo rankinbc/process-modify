@@ -81,6 +81,7 @@
             this.lbl_var_name = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_open_hex = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -165,7 +166,6 @@
             this.groupBox1.Size = new System.Drawing.Size(153, 77);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lbl_attached_status
             // 
@@ -177,7 +177,6 @@
             this.lbl_attached_status.TabIndex = 10;
             this.lbl_attached_status.Text = "Not Attached";
             this.lbl_attached_status.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_attached_status.Click += new System.EventHandler(this.lbl_attached_status_Click);
             this.lbl_attached_status.DoubleClick += new System.EventHandler(this.lbl_attached_status_DoubleClick);
             // 
             // label5
@@ -302,7 +301,6 @@
             this.tb_add_address.Name = "tb_add_address";
             this.tb_add_address.Size = new System.Drawing.Size(100, 20);
             this.tb_add_address.TabIndex = 0;
-            this.tb_add_address.TextChanged += new System.EventHandler(this.tb_add_address_TextChanged);
             // 
             // panel_mod_addresses
             // 
@@ -453,7 +451,6 @@
             this.groupBox4.Size = new System.Drawing.Size(185, 184);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // lbl_var_as_double
             // 
@@ -566,11 +563,22 @@
             this.btn_open_hex.UseVisualStyleBackColor = true;
             this.btn_open_hex.Click += new System.EventHandler(this.btn_open_hex_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(67, 98);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(24, 15);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "1.1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(715, 495);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.btn_open_hex);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
@@ -601,6 +609,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -657,6 +666,7 @@
         private System.Windows.Forms.Label lbl_var_as_byte;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btn_open_hex;
+        private System.Windows.Forms.Label label14;
 
     }
 }

@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddModAddress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddModAddress.Designer.cs">
-      <DependentUpon>AddModAddress.cs</DependentUpon>
-    </Compile>
     <Compile Include="AttachForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,10 +81,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddModAddress.resx">
-      <DependentUpon>AddModAddress.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="AttachForm.resx">
       <DependentUpon>AttachForm.cs</DependentUpon>
       <SubType>Designer</SubType>

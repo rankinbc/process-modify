@@ -40,7 +40,7 @@
             this.lb_processes.FormattingEnabled = true;
             this.lb_processes.Location = new System.Drawing.Point(12, 42);
             this.lb_processes.Name = "lb_processes";
-            this.lb_processes.Size = new System.Drawing.Size(171, 355);
+            this.lb_processes.Size = new System.Drawing.Size(171, 238);
             this.lb_processes.TabIndex = 0;
             this.lb_processes.SelectedIndexChanged += new System.EventHandler(this.lb_processes_SelectedIndexChanged);
             this.lb_processes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lb_processes_MouseDoubleClick);
@@ -57,9 +57,9 @@
             // 
             // btn_select
             // 
-            this.btn_select.Location = new System.Drawing.Point(12, 429);
+            this.btn_select.Location = new System.Drawing.Point(12, 312);
             this.btn_select.Name = "btn_select";
-            this.btn_select.Size = new System.Drawing.Size(169, 26);
+            this.btn_select.Size = new System.Drawing.Size(171, 26);
             this.btn_select.TabIndex = 2;
             this.btn_select.Text = "Select";
             this.btn_select.UseVisualStyleBackColor = true;
@@ -67,16 +67,16 @@
             // 
             // tb_process
             // 
-            this.tb_process.Location = new System.Drawing.Point(13, 404);
+            this.tb_process.Location = new System.Drawing.Point(12, 286);
             this.tb_process.Name = "tb_process";
-            this.tb_process.Size = new System.Drawing.Size(170, 20);
+            this.tb_process.Size = new System.Drawing.Size(171, 20);
             this.tb_process.TabIndex = 0;
             // 
             // AttachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(193, 458);
+            this.ClientSize = new System.Drawing.Size(193, 338);
             this.Controls.Add(this.tb_process);
             this.Controls.Add(this.btn_select);
             this.Controls.Add(this.label1);

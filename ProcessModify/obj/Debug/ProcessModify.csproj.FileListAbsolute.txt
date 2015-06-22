@@ -1,20 +1,13 @@
-C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\bin\Debug\ProcessModify.exe.config
-C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.exe
-C:\Users\BXPS\Documents\Visual Studio 2013\Projects\N64_RAM_modder3\N64_RAM_modder3\obj\Debug\ProcessModify.pdb
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\bin\Debug\ProcessModify.exe.config
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\bin\Debug\ProcessModify.exe
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\bin\Debug\ProcessModify.pdb
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.csprojResolveAssemblyReference.cache
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.AddModAddress.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.AttachForm.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.Form1.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.HexEditForm.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.HexRow.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.ModAddressControl.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.Properties.Resources.resources
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.csproj.GenerateResource.Cache
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.exe
-C:\Users\BXPS\Documents\GitHub\process-modify\N64_RAM_modder3\obj\Debug\ProcessModify.pdb
 C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\bin\Debug\ProcessModify.exe.config
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\bin\Debug\ProcessModify.exe
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\bin\Debug\ProcessModify.pdb
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.csprojResolveAssemblyReference.cache
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.AttachForm.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.Form1.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.HexEditForm.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.HexRow.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.ModAddressControl.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.Properties.Resources.resources
+C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.csproj.GenerateResource.Cache
 C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.exe
 C:\Users\BXPS\Documents\GitHub\process-modify\ProcessModify\obj\Debug\ProcessModify.pdb

@@ -11,33 +11,23 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using System.Runtime.InteropServices;
 
-
-
-
 namespace ProcessModify
 {
-        
-     
-
     public partial class Form1 : Form
     {
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
-        private const int WM_SETREDRAW = 0xB;
-
-        
+       
         Process currentProcess;
+        HexEditForm hexEditForm;
         MemoryModifier memoryModifier;
         List<ModAddress> modAddresses;
         List<ModAddressControl> modAddressControls;
-        HexEditForm hexEditForm;
-
+        
         bool attachedToProcess = false;
         bool writingToProcess = false;
         bool displayActualValues = true;
         bool varConversionsActive = false;
-       
-
 
         public Form1()
         {
@@ -46,14 +36,19 @@ namespace ProcessModify
             modAddressControls = new List<ModAddressControl>();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = 0;
+        }
+
         private void menu_attach_Click(object sender, EventArgs e)
         {
-          AttachToProcess();
+            AttachToProcess();
         }
 
         private void AttachToProcess()
         {
-              AttachForm attachForm = new AttachForm();
+            AttachForm attachForm = new AttachForm();
             attachForm.ShowDialog();
             if (attachForm.DialogResult == DialogResult.OK)
             {
@@ -67,16 +62,12 @@ namespace ProcessModify
                 varConversionsActive = true;
                 btn_open_hex.Enabled = true;
                 memoryModifier = new MemoryModifier(currentProcess);
-
-
                 updateTimer.Start();
             }
-
         }
 
         private void btn_open_hex_Click(object sender, EventArgs e)
         {
-           
             if (lb_mod_addresses.SelectedIndex != -1)
             {
                 hexEditForm = new HexEditForm(modAddresses[lb_mod_addresses.SelectedIndex].address, memoryModifier);
@@ -87,6 +78,7 @@ namespace ProcessModify
             }
             hexEditForm.Show();
         }
+
         private void ToggleWritingToProcess()
         {
             if (writingToProcess)
@@ -101,22 +93,14 @@ namespace ProcessModify
             }
         }
 
-
-
         private void AddModAddress(ModAddress m)
         {
             modAddresses.Add(m);
-
             ModAddressControl modAddressControl = new ModAddressControl(m, false);
-
             modAddressControl.Location = new Point(modAddressControl.Location.X, ModAddressControl.size_y * (modAddresses.Count - 1) + panel_mod_addresses.AutoScrollPosition.Y);
             modAddressControls.Add(modAddressControl);
-
             panel_mod_addresses.Controls.Add(modAddressControl);
-
             lb_mod_addresses.Items.Add(m.name);
-              
-            
         }
 
         private void RemoveModAddress(int index)
@@ -124,28 +108,24 @@ namespace ProcessModify
             if (index >= 0)
             {
                 modAddresses.Remove(modAddresses[index]);
-
                 for (int i = index + 1; i < modAddressControls.Count; i++)
                 {
                     modAddressControls[i].Location = new Point(modAddressControls[i].Location.X, modAddressControls[i].Location.Y - ModAddressControl.size_y);
                 }
                 panel_mod_addresses.Controls.Remove(modAddressControls[index]);
                 modAddressControls.Remove(modAddressControls[index]);
-
-
-
                 lb_mod_addresses.Items.RemoveAt(index);
                 try
                 {
                     lb_mod_addresses.SelectedIndex = index;
                 }
-                catch
+                catch //the last item was removed
                 {
                     lb_mod_addresses.SelectedIndex = index - 1;
                 }
             }
         }
-     
+
         private void btn_add_address_Click(object sender, EventArgs e)
         {
             try
@@ -153,24 +133,12 @@ namespace ProcessModify
                 Int32 address = int.Parse(tb_add_address.Text, System.Globalization.NumberStyles.HexNumber);
                 int type = comboBox1.SelectedIndex;
                 ModAddress m = new ModAddress(address, type, tb_add_address_name.Text);
-
                 AddModAddress(m);
             }
             catch
             {
                 MessageBox.Show("invalid memory address");
             }
-            
-        }
-
-        private void btn_test_iterate_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tb_add_address_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -181,9 +149,7 @@ namespace ProcessModify
                 {
                     m.UpdateActualValueLabel(memoryModifier);
                 }
-                
             }
-
 
             if (writingToProcess)
             {
@@ -195,23 +161,26 @@ namespace ProcessModify
                         {
                             memoryModifier.WriteToAddress(m.getModAddress().address, (byte)((int)m.getModAddress().value));
                         }
-
+                        else if (m.getModAddress().type == (int)ModAddress.Types.Short)
+                        {
+                            memoryModifier.WriteToAddress(m.getModAddress().address, (Int16)(m.getModAddress().value));
+                        }
                         else if (m.getModAddress().type == (int)ModAddress.Types.Float)
                         {
                             memoryModifier.WriteToAddress(m.getModAddress().address, (float)(m.getModAddress().value));
                         }
-
+                        else if (m.getModAddress().type == (int)ModAddress.Types.Double)
+                        {
+                            memoryModifier.WriteToAddress(m.getModAddress().address, (double)(m.getModAddress().value));
+                        }
                     }
                 }
             }
 
-            if (lb_mod_addresses.SelectedIndex != -1 && varConversionsActive)
+            if (varConversionsActive && lb_mod_addresses.SelectedIndex != -1)
             {
                 UpdateVarConversions(modAddresses[lb_mod_addresses.SelectedIndex].address);
             }
-
-
-           
         }
 
         private void UpdateVarConversions(Int32 address)
@@ -226,55 +195,47 @@ namespace ProcessModify
 
             double d = BitConverter.ToDouble(memoryModifier.ReadFromAddress(address, 8), 0);
             lbl_var_as_double.Text = d.ToString();
-
-
-      
         }
 
         private void menu_quit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
         }
-
         private void menu_save_Click(object sender, EventArgs e)
         {
             btn_save.PerformClick();
         }
-         private void menu_load_Click(object sender, EventArgs e)
+        private void menu_load_Click(object sender, EventArgs e)
         {
             btn_load.PerformClick();
         }
 
-         private void LoadFile(string path)
-         {
-             try
-             {
-                 XDocument xml = XDocument.Load(path);
-
-                 int ununused = xml.Descendants("Addresses").Elements().Count();
-                 foreach (XElement setting in xml.Descendants("Address"))
-                 {
-
-                     
-               
-                     Int32 address = Convert.ToInt32(setting.Element("address").Value);
-                     string name = setting.Element("name").Value;
-                     double min = Convert.ToDouble(setting.Element("min").Value);
-                     double max = Convert.ToDouble(setting.Element("max").Value);
-                     double value = Convert.ToDouble(setting.Element("value").Value);
-                     int type = Convert.ToInt32(setting.Element("type").Value);
-
-                     ModAddress modAddress = new ModAddress(address,name,min,max,value,type);
-                     AddModAddress(modAddress);
-                 }
-             }
-             catch { MessageBox.Show("Load Settings Error"); }
-         }
+        private void LoadFile(string path)
+        {
+            try
+            {
+                XDocument xml = XDocument.Load(path);
+                int ununused = xml.Descendants("Addresses").Elements().Count();
+                foreach (XElement setting in xml.Descendants("Address"))
+                {
+                    Int32 address = Convert.ToInt32(setting.Element("address").Value);
+                    string name = setting.Element("name").Value;
+                    double min = Convert.ToDouble(setting.Element("min").Value);
+                    double max = Convert.ToDouble(setting.Element("max").Value);
+                    double value = Convert.ToDouble(setting.Element("value").Value);
+                    int type = Convert.ToInt32(setting.Element("type").Value);
+                    ModAddress modAddress = new ModAddress(address, name, min, max, value, type);
+                    AddModAddress(modAddress);
+                }
+            }
+            catch 
+            { 
+                MessageBox.Show("Load Settings Error"); 
+            }
+        }
 
         private void WriteToFile(string path)
         {
-
             XElement xmlDocument = new XElement("Addresses");
             foreach (ModAddress m in modAddresses)
             {
@@ -284,14 +245,10 @@ namespace ProcessModify
                 new XElement("min", m.min),
                 new XElement("max", m.max),
                 new XElement("value", m.value),
-                new XElement("type", m.type) 
+                new XElement("type", m.type)
                 );
-
                 xmlDocument.Add(xml_ma);
-               
             }
-            
-
             xmlDocument.Save(path);
         }
 
@@ -301,18 +258,8 @@ namespace ProcessModify
             {
                 panel_mod_addresses.AutoScrollPosition = new Point(0, ModAddressControl.size_y * lb_mod_addresses.SelectedIndex);
                 lbl_var_name.Text = lb_mod_addresses.SelectedItem.ToString();
-                lbl_var_address.Text = modAddressControls[lb_mod_addresses.SelectedIndex].getModAddress().address.ToString("X");
+                lbl_var_address.Text = modAddressControls[lb_mod_addresses.SelectedIndex].getModAddress().address.ToString("X8");
             }
-        }
-
-        private void UpdateHexBox(Int32 start_address)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            comboBox1.SelectedIndex = 0;
         }
 
         private void btn_remove_address_Click(object sender, EventArgs e)
@@ -325,37 +272,25 @@ namespace ProcessModify
             ToggleWritingToProcess();
         }
 
-
-    
-        private void panel_mod_addresses_Scroll(object sender, ScrollEventArgs e) ///smooths panel scrolling down, but really slow
+        ///smooths panel scrolling and removes flashing, but slightly slower
+        private void panel_mod_addresses_Scroll(object sender, ScrollEventArgs e) 
         {
-          
-
-        Control control = sender as Control;
-        if (control!=null)
-        {
-            if (e.Type == ScrollEventType.ThumbTrack)
+            int redraw = 0xB;
+            Control control = sender as Control;
+            if (control != null)
             {
-                // Enable drawing
-                SendMessage(control.Handle, WM_SETREDRAW, 1, 0);
-                // Refresh the control 
-                control.Refresh();
-                // Disable drawing                            
-                SendMessage(control.Handle, WM_SETREDRAW, 0, 0);
+                if (e.Type == ScrollEventType.ThumbTrack)
+                {
+                    SendMessage(control.Handle, redraw, 1, 0);
+                    control.Refresh();
+                    SendMessage(control.Handle, redraw, 0, 0);
+                }
+                else
+                {
+                    SendMessage(control.Handle, redraw, 1, 0);
+                    control.Invalidate();
+                }
             }
-            else
-            {
-                // Enable drawing
-                SendMessage(control.Handle, WM_SETREDRAW, 1, 0);
-                control.Invalidate();
-            }
-       
-       } 
-}
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -378,17 +313,10 @@ namespace ProcessModify
             ofd.Filter = "XML Files (*.xml)|*.xml";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                 LoadFile(ofd.FileName);
-                 lbl_file_name.Text = ofd.SafeFileName;
-                 lbl_file_name.ForeColor = Color.Black;
+                LoadFile(ofd.FileName);
+                lbl_file_name.Text = ofd.SafeFileName;
+                lbl_file_name.ForeColor = Color.Black;
             }
-
-           
-        }
-
-        private void lbl_attached_status_Click(object sender, EventArgs e)
-        {
-          
         }
 
         private void lbl_attached_status_DoubleClick(object sender, EventArgs e)
@@ -398,23 +326,5 @@ namespace ProcessModify
                 AttachToProcess();
             }
         }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-  
-
-
-
-
-    
-
-
-
-
-
-       
     }
 }

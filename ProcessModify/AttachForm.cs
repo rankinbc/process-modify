@@ -25,8 +25,7 @@ namespace ProcessModify
         {
             processes = Process.GetProcesses();
             listProcesses();
-            tb_process.Focus();
-          
+            tb_process.Focus(); 
         }
 
         private void listProcesses()
@@ -38,22 +37,17 @@ namespace ProcessModify
         }
 
         private void btn_select_Click(object sender, EventArgs e)
-        {
-        //    selectedProcess = processes[lb_processes.SelectedIndex];
-
+        { 
             try
             {
                 selectedProcess = processes[lb_processes.FindStringExact(tb_process.Text)];
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch
+            catch (IndexOutOfRangeException exception)
             {
                 MessageBox.Show("Process not found");
-            }
-           
-            
-           
+            }   
         }
 
         private void lb_processes_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +59,5 @@ namespace ProcessModify
         {
             btn_select.PerformClick();
         }
-
-       
     }
 }

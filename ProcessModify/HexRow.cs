@@ -14,23 +14,19 @@ namespace ProcessModify
     {
         public Int32 startAddress;
         HexEditForm parentForm;
+
+        public HexRow() { }
         public HexRow(Int32 address, HexEditForm form)
         {
             InitializeComponent();
             startAddress = address;
             parentForm = form;
-           
         }
-        public HexRow()
-        {
-
-        }
-
+       
         private void HexRow_Load(object sender, EventArgs e)
         {
-            lbl_start_address.Text = startAddress.ToString("X").TrimEnd('0');
-            lbl_start_address.Text = lbl_start_address.Text.PadLeft(7,'0');
-      
+            lbl_start_address.Text = startAddress.ToString("X8").TrimEnd('0');
+          //lbl_start_address.Text = lbl_start_address.Text.PadLeft(7,'0');
         }
 
         public void reset(Int32 startAdd)
@@ -42,42 +38,22 @@ namespace ProcessModify
 
         public void updateTextBoxes(byte[] b)
         {
-            tb0.Text = b[0].ToString("X").PadLeft(2,'0');
-            tb1.Text = b[1].ToString("X").PadLeft(2, '0');
-            tb2.Text = b[2].ToString("X").PadLeft(2, '0');
-            tb3.Text = b[3].ToString("X").PadLeft(2, '0');
-            tb4.Text = b[4].ToString("X").PadLeft(2, '0');
-            tb5.Text = b[5].ToString("X").PadLeft(2, '0');
-            tb6.Text = b[6].ToString("X").PadLeft(2, '0');
-            tb7.Text = b[7].ToString("X").PadLeft(2, '0');
-            tb8.Text = b[8].ToString("X").PadLeft(2, '0');
-            tb9.Text = b[9].ToString("X").PadLeft(2, '0');
-            tbA.Text = b[10].ToString("X").PadLeft(2, '0');
-            tbB.Text = b[11].ToString("X").PadLeft(2, '0');
-            tbC.Text = b[12].ToString("X").PadLeft(2, '0');
-            tbD.Text = b[13].ToString("X").PadLeft(2, '0');
-            tbE.Text = b[14].ToString("X").PadLeft(2, '0');
-            tbF.Text = b[15].ToString("X").PadLeft(2, '0');
-        }
-
-        private void tb0_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void tb1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb3_TextChanged(object sender, EventArgs e)
-        {
-
+            tb0.Text = b[0].ToString("X2");
+            tb1.Text = b[1].ToString("X2");
+            tb2.Text = b[2].ToString("X2");
+            tb3.Text = b[3].ToString("X2");
+            tb4.Text = b[4].ToString("X2");
+            tb5.Text = b[5].ToString("X2");
+            tb6.Text = b[6].ToString("X2");
+            tb7.Text = b[7].ToString("X2");
+            tb8.Text = b[8].ToString("X2");
+            tb9.Text = b[9].ToString("X2");
+            tbA.Text = b[10].ToString("X2");
+            tbB.Text = b[11].ToString("X2");
+            tbC.Text = b[12].ToString("X2");
+            tbD.Text = b[13].ToString("X2");
+            tbE.Text = b[14].ToString("X2");
+            tbF.Text = b[15].ToString("X2");
         }
 
         private void tb0_Click(object sender, EventArgs e)

@@ -144,6 +144,7 @@
             this.btn_tie.Size = new System.Drawing.Size(27, 23);
             this.btn_tie.TabIndex = 12;
             this.btn_tie.UseVisualStyleBackColor = true;
+            this.btn_tie.Click += new System.EventHandler(this.btn_tie_Click);
             // 
             // btn_automate
             // 
@@ -153,6 +154,7 @@
             this.btn_automate.Size = new System.Drawing.Size(27, 23);
             this.btn_automate.TabIndex = 11;
             this.btn_automate.UseVisualStyleBackColor = true;
+            this.btn_automate.Click += new System.EventHandler(this.btn_automate_Click);
             // 
             // lbl_actual_value
             // 
@@ -163,7 +165,6 @@
             this.lbl_actual_value.TabIndex = 22;
             this.lbl_actual_value.Text = "255";
             this.lbl_actual_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_actual_value.Click += new System.EventHandler(this.lbl_actual_value_Click);
             // 
             // ModAddressControl
             // 

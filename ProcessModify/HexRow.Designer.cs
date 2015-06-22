@@ -69,7 +69,6 @@
             this.tb2.Text = "0F";
             this.tb2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb2.Click += new System.EventHandler(this.tb2_Click);
-            this.tb2.TextChanged += new System.EventHandler(this.tb2_TextChanged);
             // 
             // tb1
             // 
@@ -83,7 +82,6 @@
             this.tb1.Text = "0F";
             this.tb1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb1.Click += new System.EventHandler(this.tb1_Click);
-            this.tb1.TextChanged += new System.EventHandler(this.tb1_TextChanged);
             // 
             // tb0
             // 
@@ -98,7 +96,6 @@
             this.tb0.Text = "0F";
             this.tb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb0.Click += new System.EventHandler(this.tb0_Click);
-            this.tb0.TextChanged += new System.EventHandler(this.tb0_TextChanged);
             // 
             // tb5
             // 
@@ -138,7 +135,6 @@
             this.tb3.Text = "0F";
             this.tb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb3.Click += new System.EventHandler(this.tb3_Click);
-            this.tb3.TextChanged += new System.EventHandler(this.tb3_TextChanged);
             // 
             // tbB
             // 

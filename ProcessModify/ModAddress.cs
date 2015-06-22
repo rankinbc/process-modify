@@ -39,10 +39,5 @@ namespace ProcessModify
             this.max = max;
             this.value = value;
         }
-
-    
-
-
-
     }
 }

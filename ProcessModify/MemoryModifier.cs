@@ -29,7 +29,6 @@ namespace ProcessModify
         Process process;
         IntPtr processHandle;
         bool successfulLoad;
-    
 
         public MemoryModifier(Process process)
         {
@@ -43,13 +42,11 @@ namespace ProcessModify
             {
                 successfulLoad = false;
             }
-            
-    
         }
 
         public bool getSuccessfulLoad() { return successfulLoad; }
 
-        public void WriteToAddress(Int32 address, byte value) //need to add shorts and doubles
+        public void WriteToAddress(Int32 address, byte value) 
         {
             if (successfulLoad)
             {
@@ -59,6 +56,18 @@ namespace ProcessModify
                 WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
             }
         }
+
+        public void WriteToAddress(Int32 address, Int16 value)
+        {
+            if (successfulLoad)
+            {
+                int bytesWritten = 0;
+                byte[] buffer = new byte[3];
+                buffer = BitConverter.GetBytes(value);
+                WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            }
+        }
+
         public void WriteToAddress(Int32 address, float value)
         {
             if (successfulLoad)
@@ -69,26 +78,30 @@ namespace ProcessModify
                 WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
             }
         }
+
+        public void WriteToAddress(Int32 address, double value)
+        {
+            if (successfulLoad)
+            {
+                int bytesWritten = 0;
+                byte[] buffer = new byte[3];
+                buffer = BitConverter.GetBytes(value);
+                WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            }
+        }
+
         public byte[] ReadFromAddress(Int32 address, int bytes)
         {
             if (successfulLoad)
             {
                 IntPtr processHandle = OpenProcess(PROCESS_READ, false, process.Id);
-
                 int bytesRead = 0;
                 byte[] buffer = new byte[bytes];
                 ReadProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesRead);
-
                 return buffer;
             }
             else
                 return null;
         }
-
-
-
-
-  
-
     }
 }
