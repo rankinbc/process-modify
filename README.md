@@ -1,6 +1,6 @@
 # Process Modify
 
-Process Modify is an application that useful for modifying memory values of running processes. I made it to modify ROMS but it can be used for other purposes.
+Process Modify is an application that useful for modifying variables of running processes. I made it to modify ROMS but it can be used for other purposes.
 
 Here is a video demonstrating the program:<br>
 [![ScreenShot](http://img.youtube.com/vi/2nxJRHjyhq4/0.jpg)](https://www.youtube.com/watch?v=2nxJRHjyhq4)
