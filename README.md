@@ -2,7 +2,7 @@
 
 Process Modify is an application that useful for modifying memory values of running processes. It's original purpose was for hacking game ROMs, but it can be used for other things too.
 
-Here is a quick video demonstrating the program:<br>
+Here is a video demonstrating the program:<br>
 [![ScreenShot](http://img.youtube.com/vi/2nxJRHjyhq4/0.jpg)](https://www.youtube.com/watch?v=2nxJRHjyhq4)
 
 <iframe width="854" height="510" src="" frameborder="0" allowfullscreen></iframe>
