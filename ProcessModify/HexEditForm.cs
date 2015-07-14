@@ -12,18 +12,20 @@ namespace ProcessModify
 {
     public partial class HexEditForm : Form
     {
-        Int32 startAddress;
-        Int32 selectedAddress;
+        Int32  startAddress;
+        Int32  selectedAddress;
         MemoryModifier memoryModifier;
         ModAddress modAddress;
         ModAddressControl modAddressControl;
 
         int nRows = 20;
         HexRow[] hexRows;
+        Form1 form1Pointer;
 
-        public HexEditForm(Int32 initAddress, MemoryModifier m)
+        public HexEditForm(Int32 initAddress, MemoryModifier m, Form1 formPtr)
         {
             InitializeComponent();
+            form1Pointer = formPtr;
             memoryModifier = m;
             selectedAddress = initAddress;
             initForm(initAddress, true);
@@ -39,7 +41,7 @@ namespace ProcessModify
             int type;
             if (first)
             {
-                type = (int)ModAddress.Types.Byte;
+                type = (int)ModAddress.dataTypes.Byte;
             }
             else
             {
@@ -72,7 +74,7 @@ namespace ProcessModify
             timer1.Start();
         }
 
-        public void changeSelectedAddress(Int32 addr)
+        public void changeSelectedAddress(Int32  addr)
         {
             selectedAddress = addr;
             modAddress.address = addr;
@@ -105,7 +107,7 @@ namespace ProcessModify
             timer1.Start();
         }
 
-        Int32 trimAddress(Int32 a)
+        Int32  trimAddress(Int32  a)
         {
             if (a.ToString("X").EndsWith("F")) { return a - 15; }
             else if (a.ToString("X").EndsWith("E")) { return a - 14; }
@@ -131,14 +133,25 @@ namespace ProcessModify
             modAddressControl.Update();
             if (modAddressControl.getIsActive())
             {
-                if (modAddress.type == (int)ModAddress.Types.Byte)
-                {
-                    memoryModifier.WriteToAddress(modAddress.address, (byte)((int)modAddress.value));
-                }
-                else if ((modAddress.type == (int)ModAddress.Types.Float))
-                {
+                if (modAddress.type == (int)ModAddress.dataTypes.Byte)
+                    memoryModifier.WriteToAddress(modAddress.address, (byte)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.UInt16))
+                    memoryModifier.WriteToAddress(modAddress.address, (UInt16)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.Int16))
+                    memoryModifier.WriteToAddress(modAddress.address, (Int16)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.UInt32))
+                    memoryModifier.WriteToAddress(modAddress.address, (UInt32)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.Int32))
+                    memoryModifier.WriteToAddress(modAddress.address, (Int32)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.UInt64))
+                    memoryModifier.WriteToAddress(modAddress.address, (UInt64)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.Int64))
+                    memoryModifier.WriteToAddress(modAddress.address, (Int64)(modAddress.value));
+                else if ((modAddress.type == (int)ModAddress.dataTypes.Float))
                     memoryModifier.WriteToAddress(modAddress.address, (float)(modAddress.value));
-                }
+                else if ((modAddress.type == (int)ModAddress.dataTypes.Double))
+                    memoryModifier.WriteToAddress(modAddress.address, (double)(modAddress.value));
+
                 modAddressControl.UpdateActualValueLabel(memoryModifier);
             }
             foreach (HexRow hr in hexRows)
@@ -174,15 +187,7 @@ namespace ProcessModify
 
         void updateModAddressType()
         {
-            if (cb_type.SelectedIndex == 0)
-                modAddress.type = (int)ModAddress.Types.Byte;
-            else if (cb_type.SelectedIndex == 1)
-                modAddress.type = (int)ModAddress.Types.Short;
-            else if (cb_type.SelectedIndex == 2)
-                modAddress.type = (int)ModAddress.Types.Float;
-            else if (cb_type.SelectedIndex == 3)
-                modAddress.type = (int)ModAddress.Types.Double;
-
+            modAddress.type = cb_type.SelectedIndex;
             modAddressControl.ChangeType(modAddress.type);
         }
 
@@ -196,6 +201,14 @@ namespace ProcessModify
             {
                 initForm(startAddress + 16, false);
             }
+        }
+
+        private void btn_add_address_Click(object sender, EventArgs e)
+        {
+            form1Pointer.tb_add_address.Text = selectedAddress.ToString("X");
+            form1Pointer.comboBox1.SelectedIndex = cb_type.SelectedIndex;
+            form1Pointer.tb_add_address_name.Focus();
+
         }
     }
 }

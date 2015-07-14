@@ -8,7 +8,8 @@ namespace ProcessModify
 {
    public class ModAddress
     {
-        public enum Types { Byte, Short, Float, Double };
+        public static string[] dataTypeStrings = { "Byte", "UInt16", "Int16", "UInt32", "Int32" , "UInt64", "Int64", "Float", "Double" };
+        public enum dataTypes { Byte, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float, Double }
 
         public Int32 address;
         public int type;
@@ -29,7 +30,7 @@ namespace ProcessModify
             value = 255;
         }
 
-        public ModAddress(Int32 address,string name,double min,double max,double value,int type)
+        public ModAddress(Int32  address,string name,double min,double max,double value,int type)
         {
             this.address = address;
             this.type = type;

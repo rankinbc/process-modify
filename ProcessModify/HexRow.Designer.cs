@@ -53,9 +53,9 @@
             this.lbl_start_address.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_start_address.Location = new System.Drawing.Point(1, 3);
             this.lbl_start_address.Name = "lbl_start_address";
-            this.lbl_start_address.Size = new System.Drawing.Size(64, 16);
+            this.lbl_start_address.Size = new System.Drawing.Size(56, 16);
             this.lbl_start_address.TabIndex = 0;
-            this.lbl_start_address.Text = "00A1425";
+            this.lbl_start_address.Text = "000000";
             // 
             // tb2
             // 

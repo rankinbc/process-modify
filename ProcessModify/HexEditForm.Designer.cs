@@ -36,6 +36,7 @@
             this.lbl_selected_address = new System.Windows.Forms.Label();
             this.cb_type = new System.Windows.Forms.ComboBox();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.btn_add_address = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -84,7 +85,12 @@
             this.cb_type.FormattingEnabled = true;
             this.cb_type.Items.AddRange(new object[] {
             "Byte",
-            "Short",
+            "UInt16",
+            "Int16",
+            "UInt32",
+            "Int32",
+            "UInt64",
+            "Int64",
             "Float",
             "Double"});
             this.cb_type.Location = new System.Drawing.Point(393, 3);
@@ -103,11 +109,22 @@
             this.vScrollBar1.TabIndex = 14;
             this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
+            // btn_add_address
+            // 
+            this.btn_add_address.Image = global::ProcessModify.Properties.Resources.add;
+            this.btn_add_address.Location = new System.Drawing.Point(445, 521);
+            this.btn_add_address.Name = "btn_add_address";
+            this.btn_add_address.Size = new System.Drawing.Size(26, 23);
+            this.btn_add_address.TabIndex = 15;
+            this.btn_add_address.UseVisualStyleBackColor = true;
+            this.btn_add_address.Click += new System.EventHandler(this.btn_add_address_Click);
+            // 
             // HexEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 626);
+            this.Controls.Add(this.btn_add_address);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.cb_type);
             this.Controls.Add(this.btn_jump);
@@ -134,5 +151,6 @@
         private System.Windows.Forms.Label lbl_selected_address;
         private System.Windows.Forms.ComboBox cb_type;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button btn_add_address;
     }
 }

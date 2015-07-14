@@ -25,15 +25,16 @@ namespace ProcessModify
        
         private void HexRow_Load(object sender, EventArgs e)
         {
-            lbl_start_address.Text = startAddress.ToString("X8").TrimEnd('0');
-          //lbl_start_address.Text = lbl_start_address.Text.PadLeft(7,'0');
+            string startAddressString = startAddress.ToString("X8");
+            startAddressString = startAddressString.Remove(startAddressString.Length - 1, 1);
+            lbl_start_address.Text = startAddressString;
         }
 
         public void reset(Int32 startAdd)
         {
-            startAddress = startAdd;
-            lbl_start_address.Text = startAddress.ToString("X").TrimEnd('0');
-            lbl_start_address.Text = lbl_start_address.Text.PadLeft(7, '0');
+            string startAddressString = startAdd.ToString("X8");
+            startAddressString = startAddressString.Remove(startAddressString.Length - 1, 1);
+            lbl_start_address.Text = startAddressString;
         }
 
         public void updateTextBoxes(byte[] b)

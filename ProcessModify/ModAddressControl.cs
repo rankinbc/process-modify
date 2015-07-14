@@ -12,6 +12,7 @@ namespace ProcessModify
 {
     public partial class ModAddressControl : UserControl
     {
+
         private ModAddress modAddress;
 
         public static int size_x = 380;
@@ -41,23 +42,14 @@ namespace ProcessModify
         private void UpdateBackgroundColor()
         {
             if (getIsActive())
-            {
                 this.BackColor = Color.FromArgb(224, 224, 224);
-            }
             else
                 this.BackColor = Color.Transparent;
         }
 
         public void ChangeType(int type)
         {
-            switch (modAddress.type)
-            {
-                case (int)ModAddress.Types.Byte: lbl_type.Text = "Byte"; break;
-                case (int)ModAddress.Types.Short: lbl_type.Text = "Short"; break;
-                case (int)ModAddress.Types.Float: lbl_type.Text = "Float"; break;
-                case (int)ModAddress.Types.Double: lbl_type.Text = "Double"; break;
-                default: lbl_type.Text = "ERROR"; break;
-            }
+            lbl_type.Text = ModAddress.dataTypeStrings[type];
         }
 
         private void ModAddressControl_Load(object sender, EventArgs e)
@@ -71,14 +63,7 @@ namespace ProcessModify
             lbl_name.Text = modAddress.name;
             lbl_value.Text = modAddress.value.ToString();
 
-            switch (modAddress.type)
-            {
-                case (int)ModAddress.Types.Byte: lbl_type.Text = "Byte"; break;
-                case (int)ModAddress.Types.Short: lbl_type.Text = "Short"; break;
-                case (int)ModAddress.Types.Float: lbl_type.Text = "Float"; break;
-                case (int)ModAddress.Types.Double: lbl_type.Text = "Double"; break;
-                default: lbl_type.Text = "ERROR"; break;
-            }
+            ChangeType(modAddress.type);
         }
 
         private void scrollbar_Scroll(object sender, ScrollEventArgs e)
@@ -147,28 +132,63 @@ namespace ProcessModify
             int bytesToRead = -1;
             switch (modAddress.type)
             {
-                case (int)ModAddress.Types.Byte:
+                case (int)ModAddress.dataTypes.Byte:
                     {
                         bytesToRead = 1;
                         byte av = m.ReadFromAddress(modAddress.address, bytesToRead)[0];
                         lbl_actual_value.Text = av.ToString();
                         break;
                     }
-                case (int)ModAddress.Types.Short:
+                case (int)ModAddress.dataTypes.UInt16:
                     {
                         bytesToRead = 2;
-                        int av = BitConverter.ToInt16(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        UInt16 av = BitConverter.ToUInt16(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
                         lbl_actual_value.Text = av.ToString();
                         break;
                     }
-                case (int)ModAddress.Types.Float:
+                case (int)ModAddress.dataTypes.Int16:
+                    {
+                        bytesToRead = 2;
+                        Int16 av = BitConverter.ToInt16(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        lbl_actual_value.Text = av.ToString();
+                        break;
+                    }
+                case (int)ModAddress.dataTypes.UInt32:
+                    {
+                        bytesToRead = 4;
+                        UInt32 av = BitConverter.ToUInt32(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        lbl_actual_value.Text = av.ToString();
+                        break;
+                    }
+                case (int)ModAddress.dataTypes.Int32:
+                    {
+                        bytesToRead = 4;
+                        Int32 av = BitConverter.ToInt32(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        lbl_actual_value.Text = av.ToString();
+                        break;
+                    }
+                case (int)ModAddress.dataTypes.UInt64:
+                    {
+                        bytesToRead = 8;
+                        UInt64 av = BitConverter.ToUInt64(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        lbl_actual_value.Text = av.ToString();
+                        break;
+                    }
+                case (int)ModAddress.dataTypes.Int64:
+                    {
+                        bytesToRead = 8;
+                        Int64 av = BitConverter.ToInt64(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
+                        lbl_actual_value.Text = av.ToString();
+                        break;
+                    }
+                case (int)ModAddress.dataTypes.Float:
                     {
                         bytesToRead = 4;
                         float av = BitConverter.ToSingle(m.ReadFromAddress(modAddress.address, bytesToRead), 0);
                         lbl_actual_value.Text = av.ToString();
                         break;
                     }
-                case (int)ModAddress.Types.Double:
+                case (int)ModAddress.dataTypes.Double:
                     {
                         bytesToRead = 8;
                         double av = BitConverter.ToDouble(m.ReadFromAddress(modAddress.address, bytesToRead), 0);

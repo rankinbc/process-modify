@@ -34,6 +34,7 @@ namespace ProcessModify
         {
             try
             {
+                //open process
                 this.process = process;
                 processHandle = OpenProcess(PROCESS_WRITE, false, process.Id);
                 successfulLoad = true;
@@ -44,9 +45,8 @@ namespace ProcessModify
             }
         }
 
-        public bool getSuccessfulLoad() { return successfulLoad; }
-
-        public void WriteToAddress(Int32 address, byte value) 
+        //Write byte
+        public void WriteToAddress(Int32 address, byte value)
         {
             if (successfulLoad)
             {
@@ -57,39 +57,55 @@ namespace ProcessModify
             }
         }
 
+        //Write UInt16
+        public void WriteToAddress(Int32 address, UInt16 value)
+        {
+            if (successfulLoad)
+            {
+                int bytesWritten = 0;
+                byte[] buffer = new byte[2];
+                buffer = BitConverter.GetBytes(value);
+                WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
+            }
+        }
+
+        //Write Int16
         public void WriteToAddress(Int32 address, Int16 value)
         {
             if (successfulLoad)
             {
                 int bytesWritten = 0;
-                byte[] buffer = new byte[3];
+                byte[] buffer = new byte[2];
                 buffer = BitConverter.GetBytes(value);
                 WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
             }
         }
 
+        //Write float
         public void WriteToAddress(Int32 address, float value)
         {
             if (successfulLoad)
             {
                 int bytesWritten = 0;
-                byte[] buffer = new byte[3];
+                byte[] buffer = new byte[4];
                 buffer = BitConverter.GetBytes(value);
                 WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
             }
         }
 
+        //Write double
         public void WriteToAddress(Int32 address, double value)
         {
             if (successfulLoad)
             {
                 int bytesWritten = 0;
-                byte[] buffer = new byte[3];
+                byte[] buffer = new byte[8];
                 buffer = BitConverter.GetBytes(value);
                 WriteProcessMemory((int)processHandle, address, buffer, buffer.Length, ref bytesWritten);
             }
         }
 
+        //Read byte stream
         public byte[] ReadFromAddress(Int32 address, int bytes)
         {
             if (successfulLoad)
@@ -103,5 +119,8 @@ namespace ProcessModify
             else
                 return null;
         }
+
+
+        public bool getSuccessfulLoad() { return successfulLoad; }
     }
 }

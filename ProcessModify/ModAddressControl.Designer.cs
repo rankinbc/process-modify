@@ -99,9 +99,9 @@
             // 
             // lbl_type
             // 
-            this.lbl_type.Location = new System.Drawing.Point(339, 4);
+            this.lbl_type.Location = new System.Drawing.Point(319, 4);
             this.lbl_type.Name = "lbl_type";
-            this.lbl_type.Size = new System.Drawing.Size(40, 13);
+            this.lbl_type.Size = new System.Drawing.Size(60, 13);
             this.lbl_type.TabIndex = 13;
             this.lbl_type.Text = "float";
             this.lbl_type.TextAlign = System.Drawing.ContentAlignment.TopRight;

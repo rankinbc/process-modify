@@ -39,6 +39,7 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_writing_to_process = new System.Windows.Forms.Label();
             this.lbl_attached_status = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_pid = new System.Windows.Forms.Label();
@@ -69,9 +70,19 @@
             this.btn_remove_address = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbl_var_as_uint64 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lbl_var_as_int64 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lbl_var_as_uint32 = new System.Windows.Forms.Label();
+            this.label_999 = new System.Windows.Forms.Label();
+            this.lbl_var_as_int32 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbl_var_as_uint16 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.lbl_var_as_double = new System.Windows.Forms.Label();
             this.lbl_var_as_float = new System.Windows.Forms.Label();
-            this.lbl_var_as_short = new System.Windows.Forms.Label();
+            this.lbl_var_as_int16 = new System.Windows.Forms.Label();
             this.lbl_var_as_byte = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -156,6 +167,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_writing_to_process);
             this.groupBox1.Controls.Add(this.lbl_attached_status);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lbl_pid);
@@ -163,9 +175,20 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1, 112);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(153, 77);
+            this.groupBox1.Size = new System.Drawing.Size(153, 85);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_writing_to_process
+            // 
+            this.lbl_writing_to_process.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_writing_to_process.ForeColor = System.Drawing.Color.Red;
+            this.lbl_writing_to_process.Location = new System.Drawing.Point(7, 32);
+            this.lbl_writing_to_process.Name = "lbl_writing_to_process";
+            this.lbl_writing_to_process.Size = new System.Drawing.Size(138, 13);
+            this.lbl_writing_to_process.TabIndex = 11;
+            this.lbl_writing_to_process.Text = "Not writing to process";
+            this.lbl_writing_to_process.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbl_attached_status
             // 
@@ -182,7 +205,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 54);
+            this.label5.Location = new System.Drawing.Point(6, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 9;
@@ -191,7 +214,7 @@
             // lbl_pid
             // 
             this.lbl_pid.AutoSize = true;
-            this.lbl_pid.Location = new System.Drawing.Point(34, 54);
+            this.lbl_pid.Location = new System.Drawing.Point(34, 67);
             this.lbl_pid.Name = "lbl_pid";
             this.lbl_pid.Size = new System.Drawing.Size(0, 13);
             this.lbl_pid.TabIndex = 8;
@@ -199,7 +222,7 @@
             // lbl_process
             // 
             this.lbl_process.AutoSize = true;
-            this.lbl_process.Location = new System.Drawing.Point(53, 35);
+            this.lbl_process.Location = new System.Drawing.Point(57, 48);
             this.lbl_process.Name = "lbl_process";
             this.lbl_process.Size = new System.Drawing.Size(0, 13);
             this.lbl_process.TabIndex = 1;
@@ -207,7 +230,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Location = new System.Drawing.Point(6, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 0;
@@ -232,18 +255,23 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(68, 12);
+            this.label6.Location = new System.Drawing.Point(47, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Add";
+            this.label6.Text = "Add Address";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Byte (1)",
-            "Short (2)",
+            "UInt16 (2)",
+            "Int16 (2)",
+            "UInt32 (4)",
+            "Int32 (4)",
+            "UInt64 (8)",
+            "Int64 (8)",
             "Float (4)",
             "Double (8)"});
             this.comboBox1.Location = new System.Drawing.Point(50, 73);
@@ -334,7 +362,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 45);
+            this.label7.Location = new System.Drawing.Point(9, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 11;
@@ -344,7 +372,7 @@
             // 
             this.lbl_file_name.AutoSize = true;
             this.lbl_file_name.ForeColor = System.Drawing.Color.Red;
-            this.lbl_file_name.Location = new System.Drawing.Point(34, 45);
+            this.lbl_file_name.Location = new System.Drawing.Point(34, 44);
             this.lbl_file_name.Name = "lbl_file_name";
             this.lbl_file_name.Size = new System.Drawing.Size(63, 13);
             this.lbl_file_name.TabIndex = 12;
@@ -356,16 +384,16 @@
             this.groupBox3.Controls.Add(this.btn_save);
             this.groupBox3.Controls.Add(this.lbl_file_name);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(1, 182);
+            this.groupBox3.Location = new System.Drawing.Point(1, 186);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(153, 69);
+            this.groupBox3.Size = new System.Drawing.Size(153, 65);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             // 
             // btn_load
             // 
             this.btn_load.Image = global::ProcessModify.Properties.Resources.load;
-            this.btn_load.Location = new System.Drawing.Point(36, 11);
+            this.btn_load.Location = new System.Drawing.Point(36, 14);
             this.btn_load.Name = "btn_load";
             this.btn_load.Size = new System.Drawing.Size(26, 23);
             this.btn_load.TabIndex = 14;
@@ -375,7 +403,7 @@
             // btn_save
             // 
             this.btn_save.Image = global::ProcessModify.Properties.Resources.save;
-            this.btn_save.Location = new System.Drawing.Point(6, 11);
+            this.btn_save.Location = new System.Drawing.Point(6, 14);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(26, 23);
             this.btn_save.TabIndex = 13;
@@ -435,9 +463,19 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lbl_var_as_uint64);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.lbl_var_as_int64);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.lbl_var_as_uint32);
+            this.groupBox4.Controls.Add(this.label_999);
+            this.groupBox4.Controls.Add(this.lbl_var_as_int32);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.lbl_var_as_uint16);
+            this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.lbl_var_as_double);
             this.groupBox4.Controls.Add(this.lbl_var_as_float);
-            this.groupBox4.Controls.Add(this.lbl_var_as_short);
+            this.groupBox4.Controls.Add(this.lbl_var_as_int16);
             this.groupBox4.Controls.Add(this.lbl_var_as_byte);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label12);
@@ -448,86 +486,185 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Location = new System.Drawing.Point(1, 243);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(185, 184);
+            this.groupBox4.Size = new System.Drawing.Size(185, 202);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 
+            // lbl_var_as_uint64
+            // 
+            this.lbl_var_as_uint64.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint64.Location = new System.Drawing.Point(89, 135);
+            this.lbl_var_as_uint64.Name = "lbl_var_as_uint64";
+            this.lbl_var_as_uint64.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint64.TabIndex = 33;
+            this.lbl_var_as_uint64.Text = "0.00000";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(37, 135);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(36, 12);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "UInt64:";
+            // 
+            // lbl_var_as_int64
+            // 
+            this.lbl_var_as_int64.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int64.Location = new System.Drawing.Point(89, 149);
+            this.lbl_var_as_int64.Name = "lbl_var_as_int64";
+            this.lbl_var_as_int64.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int64.TabIndex = 31;
+            this.lbl_var_as_int64.Text = "0.00000";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(37, 149);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(29, 12);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "Int64:";
+            // 
+            // lbl_var_as_uint32
+            // 
+            this.lbl_var_as_uint32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint32.Location = new System.Drawing.Point(89, 108);
+            this.lbl_var_as_uint32.Name = "lbl_var_as_uint32";
+            this.lbl_var_as_uint32.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint32.TabIndex = 29;
+            this.lbl_var_as_uint32.Text = "0.00000";
+            // 
+            // label_999
+            // 
+            this.label_999.AutoSize = true;
+            this.label_999.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_999.Location = new System.Drawing.Point(37, 108);
+            this.label_999.Name = "label_999";
+            this.label_999.Size = new System.Drawing.Size(36, 12);
+            this.label_999.TabIndex = 28;
+            this.label_999.Text = "UInt32:";
+            // 
+            // lbl_var_as_int32
+            // 
+            this.lbl_var_as_int32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int32.Location = new System.Drawing.Point(89, 122);
+            this.lbl_var_as_int32.Name = "lbl_var_as_int32";
+            this.lbl_var_as_int32.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int32.TabIndex = 27;
+            this.lbl_var_as_int32.Text = "0.00000";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(37, 122);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(29, 12);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "Int32:";
+            // 
+            // lbl_var_as_uint16
+            // 
+            this.lbl_var_as_uint16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint16.Location = new System.Drawing.Point(89, 80);
+            this.lbl_var_as_uint16.Name = "lbl_var_as_uint16";
+            this.lbl_var_as_uint16.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint16.TabIndex = 25;
+            this.lbl_var_as_uint16.Text = "0.00000";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(37, 80);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(36, 12);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "UInt16:";
+            // 
             // lbl_var_as_double
             // 
-            this.lbl_var_as_double.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_double.Location = new System.Drawing.Point(66, 140);
+            this.lbl_var_as_double.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_double.Location = new System.Drawing.Point(89, 176);
             this.lbl_var_as_double.Name = "lbl_var_as_double";
-            this.lbl_var_as_double.Size = new System.Drawing.Size(113, 13);
+            this.lbl_var_as_double.Size = new System.Drawing.Size(70, 10);
             this.lbl_var_as_double.TabIndex = 23;
             this.lbl_var_as_double.Text = "0.00000";
             // 
             // lbl_var_as_float
             // 
-            this.lbl_var_as_float.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_float.Location = new System.Drawing.Point(60, 118);
+            this.lbl_var_as_float.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_float.Location = new System.Drawing.Point(89, 162);
             this.lbl_var_as_float.Name = "lbl_var_as_float";
-            this.lbl_var_as_float.Size = new System.Drawing.Size(119, 14);
+            this.lbl_var_as_float.Size = new System.Drawing.Size(70, 10);
             this.lbl_var_as_float.TabIndex = 22;
             this.lbl_var_as_float.Text = "0.00000";
             // 
-            // lbl_var_as_short
+            // lbl_var_as_int16
             // 
-            this.lbl_var_as_short.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_short.Location = new System.Drawing.Point(60, 96);
-            this.lbl_var_as_short.Name = "lbl_var_as_short";
-            this.lbl_var_as_short.Size = new System.Drawing.Size(119, 14);
-            this.lbl_var_as_short.TabIndex = 21;
-            this.lbl_var_as_short.Text = "0.00000";
+            this.lbl_var_as_int16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int16.Location = new System.Drawing.Point(89, 94);
+            this.lbl_var_as_int16.Name = "lbl_var_as_int16";
+            this.lbl_var_as_int16.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int16.TabIndex = 21;
+            this.lbl_var_as_int16.Text = "0.00000";
             // 
             // lbl_var_as_byte
             // 
-            this.lbl_var_as_byte.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_byte.Location = new System.Drawing.Point(60, 73);
+            this.lbl_var_as_byte.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_byte.Location = new System.Drawing.Point(89, 66);
             this.lbl_var_as_byte.Name = "lbl_var_as_byte";
-            this.lbl_var_as_byte.Size = new System.Drawing.Size(119, 14);
+            this.lbl_var_as_byte.Size = new System.Drawing.Size(70, 10);
             this.lbl_var_as_byte.TabIndex = 20;
             this.lbl_var_as_byte.Text = "0.00000";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 140);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(37, 176);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.Size = new System.Drawing.Size(37, 12);
             this.label13.TabIndex = 19;
-            this.label13.Text = "As Double:";
+            this.label13.Text = "Double:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 118);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(37, 162);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 13);
+            this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 18;
-            this.label12.Text = "As Float:";
+            this.label12.Text = "Float:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 96);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(37, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.Size = new System.Drawing.Size(29, 12);
             this.label11.TabIndex = 17;
-            this.label11.Text = "As Short:";
+            this.label11.Text = "Int16:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 74);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(37, 66);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.Size = new System.Drawing.Size(27, 12);
             this.label8.TabIndex = 16;
-            this.label8.Text = "As Byte:";
+            this.label8.Text = "Byte:";
             // 
             // lbl_var_address
             // 
             this.lbl_var_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_address.Location = new System.Drawing.Point(11, 52);
+            this.lbl_var_address.Location = new System.Drawing.Point(11, 42);
             this.lbl_var_address.Name = "lbl_var_address";
             this.lbl_var_address.Size = new System.Drawing.Size(162, 15);
             this.lbl_var_address.TabIndex = 15;
@@ -536,7 +673,7 @@
             // lbl_var_name
             // 
             this.lbl_var_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_name.Location = new System.Drawing.Point(12, 28);
+            this.lbl_var_name.Location = new System.Drawing.Point(12, 25);
             this.lbl_var_name.Name = "lbl_var_name";
             this.lbl_var_name.Size = new System.Drawing.Size(162, 15);
             this.lbl_var_name.TabIndex = 14;
@@ -555,7 +692,7 @@
             // btn_open_hex
             // 
             this.btn_open_hex.Enabled = false;
-            this.btn_open_hex.Location = new System.Drawing.Point(57, 451);
+            this.btn_open_hex.Location = new System.Drawing.Point(57, 460);
             this.btn_open_hex.Name = "btn_open_hex";
             this.btn_open_hex.Size = new System.Drawing.Size(75, 23);
             this.btn_open_hex.TabIndex = 24;
@@ -571,18 +708,18 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 15);
             this.label14.TabIndex = 11;
-            this.label14.Text = "1.1";
+            this.label14.Text = "1.2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(715, 495);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btn_open_hex);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_toggle_writing_to_process);
             this.Controls.Add(this.button3);
@@ -624,11 +761,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tb_add_address_name;
+        public System.Windows.Forms.TextBox tb_add_address_name;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_add_address;
-        private System.Windows.Forms.Button btn_add_address;
-        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.TextBox tb_add_address;
+        public System.Windows.Forms.Button btn_add_address;
+        public System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel_mod_addresses;
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Label lbl_pid;
@@ -662,11 +799,22 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbl_var_as_double;
         private System.Windows.Forms.Label lbl_var_as_float;
-        private System.Windows.Forms.Label lbl_var_as_short;
+        private System.Windows.Forms.Label lbl_var_as_int16;
         private System.Windows.Forms.Label lbl_var_as_byte;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btn_open_hex;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbl_var_as_uint16;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl_var_as_uint32;
+        private System.Windows.Forms.Label label_999;
+        private System.Windows.Forms.Label lbl_var_as_int32;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lbl_var_as_uint64;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lbl_var_as_int64;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbl_writing_to_process;
 
     }
 }
