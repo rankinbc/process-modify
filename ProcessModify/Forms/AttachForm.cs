@@ -24,11 +24,11 @@ namespace ProcessModify
         private void AttachForm_Load(object sender, EventArgs e)
         {
             processes = Process.GetProcesses();
-            listProcesses();
+            ListProcesses();
             tb_process.Focus(); 
         }
 
-        private void listProcesses()
+        private void ListProcesses()
         {
             for (int i = 0; i < processes.Length; i++)
             {
@@ -36,28 +36,43 @@ namespace ProcessModify
             }
         }
 
-        private void btn_select_Click(object sender, EventArgs e)
-        { 
+        private void SelectProcess(String processString)
+        {
             try
             {
-                selectedProcess = processes[lb_processes.FindStringExact(tb_process.Text)];
+                selectedProcess = processes[lb_processes.FindStringExact(processString)];
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch (IndexOutOfRangeException exception)
+            catch (IndexOutOfRangeException e)
             {
-                MessageBox.Show("Process not found");
+                MessageBox.Show("Process not found: " + e.ToString());
             }   
         }
+
+        private void btn_select_Click(object sender, EventArgs e)
+        {
+            SelectProcess(tb_process.Text);
+        } 
+
+        private void lb_processes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            SelectProcess(tb_process.Text);
+        }    
 
         private void lb_processes_SelectedIndexChanged(object sender, EventArgs e)
         {
             tb_process.Text = lb_processes.SelectedItem.ToString();
         }
 
-        private void lb_processes_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void AttachForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            btn_select.PerformClick();
+            SelectProcess(tb_process.Text);
+        }
+
+        private void btn_select_mupen_Click(object sender, EventArgs e) //temporary
+        {      
+            SelectProcess("mupen64");
         }
     }
 }

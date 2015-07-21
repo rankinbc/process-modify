@@ -9,7 +9,9 @@ namespace ProcessModify
    public class ModAddress
     {
         public static string[] dataTypeStrings = { "Byte", "UInt16", "Int16", "UInt32", "Int32" , "UInt64", "Int64", "Float", "Double" };
+        public static int[] dataTypeSizes = { 1, 2, 2, 4, 4, 8, 8, 4, 8 };
         public enum dataTypes { Byte, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float, Double }
+        
 
         public Int32 address;
         public int type;

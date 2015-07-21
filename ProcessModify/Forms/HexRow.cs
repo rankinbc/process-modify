@@ -14,6 +14,7 @@ namespace ProcessModify
     {
         public Int32 startAddress;
         HexEditForm parentForm;
+        public static int sizeY;
 
         public HexRow() { }
         public HexRow(Int32 address, HexEditForm form)
@@ -21,6 +22,7 @@ namespace ProcessModify
             InitializeComponent();
             startAddress = address;
             parentForm = form;
+            sizeY = 22;
         }
        
         private void HexRow_Load(object sender, EventArgs e)
@@ -32,10 +34,12 @@ namespace ProcessModify
 
         public void reset(Int32 startAdd)
         {
+            startAddress = startAdd;
             string startAddressString = startAdd.ToString("X8");
             startAddressString = startAddressString.Remove(startAddressString.Length - 1, 1);
             lbl_start_address.Text = startAddressString;
         }
+
 
         public void updateTextBoxes(byte[] b)
         {
@@ -55,6 +59,30 @@ namespace ProcessModify
             tbD.Text = b[13].ToString("X2");
             tbE.Text = b[14].ToString("X2");
             tbF.Text = b[15].ToString("X2");
+        }
+
+        public TextBox getByteTextBox(int offset)
+        {
+            switch (offset)
+            {
+                case 0 : return tb0;
+                case 1: return tb1;
+                case 2: return tb2;
+                case 3: return tb3;
+                case 4: return tb4;
+                case 5: return tb5;
+                case 6: return tb6;
+                case 7: return tb7;
+                case 8: return tb8;
+                case 9: return tb9;
+                case 10: return tbA;
+                case 11: return tbB;
+                case 12: return tbC;
+                case 13: return tbD;
+                case 14: return tbE;
+                case 15: return tbF;
+                default: return null;
+            }
         }
 
         private void tb0_Click(object sender, EventArgs e)
@@ -136,5 +164,7 @@ namespace ProcessModify
         {
             parentForm.changeSelectedAddress(startAddress + 15);
         }
+
+
     }
 }

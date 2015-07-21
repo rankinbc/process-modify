@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_select = new System.Windows.Forms.Button();
             this.tb_process = new System.Windows.Forms.TextBox();
+            this.btn_select_mupen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lb_processes
@@ -72,11 +73,23 @@
             this.tb_process.Size = new System.Drawing.Size(171, 20);
             this.tb_process.TabIndex = 0;
             // 
+            // btn_select_mupen
+            // 
+            this.btn_select_mupen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_select_mupen.Location = new System.Drawing.Point(177, 312);
+            this.btn_select_mupen.Name = "btn_select_mupen";
+            this.btn_select_mupen.Size = new System.Drawing.Size(16, 26);
+            this.btn_select_mupen.TabIndex = 3;
+            this.btn_select_mupen.Text = "M";
+            this.btn_select_mupen.UseVisualStyleBackColor = false;
+            this.btn_select_mupen.Click += new System.EventHandler(this.btn_select_mupen_Click);
+            // 
             // AttachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(193, 338);
+            this.Controls.Add(this.btn_select_mupen);
             this.Controls.Add(this.tb_process);
             this.Controls.Add(this.btn_select);
             this.Controls.Add(this.label1);
@@ -90,6 +103,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AttachForm";
             this.Load += new System.EventHandler(this.AttachForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AttachForm_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +115,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_select;
         private System.Windows.Forms.TextBox tb_process;
+        private System.Windows.Forms.Button btn_select_mupen;
     }
 }

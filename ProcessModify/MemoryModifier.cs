@@ -45,6 +45,8 @@ namespace ProcessModify
             }
         }
 
+        public bool getSuccessfulLoad() { return successfulLoad; }
+
         //Write byte
         public void WriteToAddress(Int32 address, byte value)
         {
@@ -105,7 +107,7 @@ namespace ProcessModify
             }
         }
 
-        //Read byte stream
+        //Read bytes
         public byte[] ReadFromAddress(Int32 address, int bytes)
         {
             if (successfulLoad)
@@ -120,7 +122,5 @@ namespace ProcessModify
                 return null;
         }
 
-
-        public bool getSuccessfulLoad() { return successfulLoad; }
     }
 }

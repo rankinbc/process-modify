@@ -12,23 +12,19 @@ namespace ProcessModify
 {
     public partial class ModAddressControl : UserControl
     {
+        public static int sizeX = 380;
+        public static int sizeY = 80; 
+        public BigCheckBox cb_locked;
 
         private ModAddress modAddress;
-
-        public static int size_x = 380;
-        public static int size_y = 96;
-
+       
         public ModAddressControl(ModAddress modAddress, bool minimal)
         {
             InitializeComponent();
+            cb_locked = new BigCheckBox();
+            this.cb_locked.CheckedChanged += cb_locked_CheckedChanged;
+            this.Controls.Add(cb_locked);
             this.modAddress = modAddress;
-
-            tb_min.Text = modAddress.min.ToString();
-            tb_max.Text = modAddress.max.ToString();
-            lbl_value.Text = modAddress.value.ToString();
-
-            AdjustScrollbar();
-            UpdateBackgroundColor();
 
             if (minimal)
             {
@@ -36,8 +32,27 @@ namespace ProcessModify
                 btn_tie.Visible = false;
                 this.BorderStyle = BorderStyle.None;
                 cb_locked.Checked = true;
+                lbl_address.Font = new Font(lbl_name.Font, FontStyle.Bold);
             }
         }
+
+        private void ModAddressControl_Load(object sender, EventArgs e)
+        {
+            tb_max.Text = modAddress.max.ToString();
+            tb_min.Text = modAddress.min.ToString();
+            lbl_value.Text = modAddress.value.ToString();
+            lbl_address.Text = modAddress.address.ToString("X8");
+            lbl_name.Text = modAddress.name;
+            lbl_value.Text = modAddress.value.ToString();
+            scrollbar.Minimum = 0;
+            scrollbar.Maximum = 109;
+
+            AdjustScrollbar();
+            UpdateBackgroundColor();
+            ChangeType(modAddress.type);
+        }
+
+        public ModAddress getModAddress() { return modAddress; }
 
         private void UpdateBackgroundColor()
         {
@@ -52,27 +67,11 @@ namespace ProcessModify
             lbl_type.Text = ModAddress.dataTypeStrings[type];
         }
 
-        private void ModAddressControl_Load(object sender, EventArgs e)
-        {
-            tb_max.Text = Convert.ToString(modAddress.max);
-            tb_min.Text = Convert.ToString(modAddress.min);
-            scrollbar.Minimum = 0;
-            scrollbar.Maximum = 109;
-
-            lbl_address.Text = modAddress.address.ToString("X");
-            lbl_name.Text = modAddress.name;
-            lbl_value.Text = modAddress.value.ToString();
-
-            ChangeType(modAddress.type);
-        }
-
         private void scrollbar_Scroll(object sender, ScrollEventArgs e)
         {
             modAddress.value = modAddress.min + ((double)scrollbar.Value / (double)100) * (modAddress.max - modAddress.min);
             lbl_value.Text = modAddress.value.ToString();
         }
-
-        public ModAddress getModAddress() { return modAddress; }
 
         private void tb_max_TextChanged(object sender, EventArgs e)
         {
@@ -86,10 +85,7 @@ namespace ProcessModify
                 {
                     modAddress.min = Convert.ToDouble(tb_min.Text);
                 }
-                catch
-                {
-                    //do nothing
-                }
+                catch  { }
             }
         }
 
@@ -105,10 +101,7 @@ namespace ProcessModify
                 {
                     modAddress.min = Convert.ToDouble(tb_min.Text);
                 }
-                catch
-                {
-                    //do nothing
-                }
+                catch { }
             }
         }
 

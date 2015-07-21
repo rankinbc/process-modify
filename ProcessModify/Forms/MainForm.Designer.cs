@@ -1,6 +1,6 @@
 ﻿namespace ProcessModify
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_attach = new System.Windows.Forms.ToolStripMenuItem();
+            this.detachFromProcessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_save = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_load = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_quit = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,11 +94,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btn_open_hex = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
+            this.var_conversion_panel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.var_conversion_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -118,6 +121,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_attach,
+            this.detachFromProcessToolStripMenuItem,
             this.menu_save,
             this.menu_load,
             this.menu_quit});
@@ -128,28 +132,35 @@
             // menu_attach
             // 
             this.menu_attach.Name = "menu_attach";
-            this.menu_attach.Size = new System.Drawing.Size(166, 22);
+            this.menu_attach.Size = new System.Drawing.Size(183, 22);
             this.menu_attach.Text = "Attach to Process";
             this.menu_attach.Click += new System.EventHandler(this.menu_attach_Click);
+            // 
+            // detachFromProcessToolStripMenuItem
+            // 
+            this.detachFromProcessToolStripMenuItem.Name = "detachFromProcessToolStripMenuItem";
+            this.detachFromProcessToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.detachFromProcessToolStripMenuItem.Text = "Detach from Process";
+            this.detachFromProcessToolStripMenuItem.Click += new System.EventHandler(this.detachFromProcessToolStripMenuItem_Click);
             // 
             // menu_save
             // 
             this.menu_save.Name = "menu_save";
-            this.menu_save.Size = new System.Drawing.Size(166, 22);
+            this.menu_save.Size = new System.Drawing.Size(183, 22);
             this.menu_save.Text = "Save";
             this.menu_save.Click += new System.EventHandler(this.menu_save_Click);
             // 
             // menu_load
             // 
             this.menu_load.Name = "menu_load";
-            this.menu_load.Size = new System.Drawing.Size(166, 22);
+            this.menu_load.Size = new System.Drawing.Size(183, 22);
             this.menu_load.Text = "Load";
             this.menu_load.Click += new System.EventHandler(this.menu_load_Click);
             // 
             // menu_quit
             // 
             this.menu_quit.Name = "menu_quit";
-            this.menu_quit.Size = new System.Drawing.Size(166, 22);
+            this.menu_quit.Size = new System.Drawing.Size(183, 22);
             this.menu_quit.Text = "Quit";
             this.menu_quit.Click += new System.EventHandler(this.menu_quit_Click);
             // 
@@ -463,24 +474,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.lbl_var_as_uint64);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.lbl_var_as_int64);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.lbl_var_as_uint32);
-            this.groupBox4.Controls.Add(this.label_999);
-            this.groupBox4.Controls.Add(this.lbl_var_as_int32);
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.lbl_var_as_uint16);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.lbl_var_as_double);
-            this.groupBox4.Controls.Add(this.lbl_var_as_float);
-            this.groupBox4.Controls.Add(this.lbl_var_as_int16);
-            this.groupBox4.Controls.Add(this.lbl_var_as_byte);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.var_conversion_panel);
             this.groupBox4.Controls.Add(this.lbl_var_address);
             this.groupBox4.Controls.Add(this.lbl_var_name);
             this.groupBox4.Controls.Add(this.label10);
@@ -492,172 +486,172 @@
             // 
             // lbl_var_as_uint64
             // 
-            this.lbl_var_as_uint64.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_uint64.Location = new System.Drawing.Point(89, 135);
+            this.lbl_var_as_uint64.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint64.Location = new System.Drawing.Point(55, 70);
             this.lbl_var_as_uint64.Name = "lbl_var_as_uint64";
-            this.lbl_var_as_uint64.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint64.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_uint64.TabIndex = 33;
             this.lbl_var_as_uint64.Text = "0.00000";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(37, 135);
+            this.label17.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 70);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(36, 12);
+            this.label17.Size = new System.Drawing.Size(46, 12);
             this.label17.TabIndex = 32;
             this.label17.Text = "UInt64:";
             // 
             // lbl_var_as_int64
             // 
-            this.lbl_var_as_int64.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_int64.Location = new System.Drawing.Point(89, 149);
+            this.lbl_var_as_int64.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int64.Location = new System.Drawing.Point(55, 84);
             this.lbl_var_as_int64.Name = "lbl_var_as_int64";
-            this.lbl_var_as_int64.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int64.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_int64.TabIndex = 31;
             this.lbl_var_as_int64.Text = "0.00000";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(37, 149);
+            this.label20.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 84);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(29, 12);
+            this.label20.Size = new System.Drawing.Size(38, 12);
             this.label20.TabIndex = 30;
             this.label20.Text = "Int64:";
             // 
             // lbl_var_as_uint32
             // 
-            this.lbl_var_as_uint32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_uint32.Location = new System.Drawing.Point(89, 108);
+            this.lbl_var_as_uint32.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint32.Location = new System.Drawing.Point(55, 43);
             this.lbl_var_as_uint32.Name = "lbl_var_as_uint32";
-            this.lbl_var_as_uint32.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint32.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_uint32.TabIndex = 29;
             this.lbl_var_as_uint32.Text = "0.00000";
             // 
             // label_999
             // 
             this.label_999.AutoSize = true;
-            this.label_999.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_999.Location = new System.Drawing.Point(37, 108);
+            this.label_999.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_999.Location = new System.Drawing.Point(3, 43);
             this.label_999.Name = "label_999";
-            this.label_999.Size = new System.Drawing.Size(36, 12);
+            this.label_999.Size = new System.Drawing.Size(46, 12);
             this.label_999.TabIndex = 28;
             this.label_999.Text = "UInt32:";
             // 
             // lbl_var_as_int32
             // 
-            this.lbl_var_as_int32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_int32.Location = new System.Drawing.Point(89, 122);
+            this.lbl_var_as_int32.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int32.Location = new System.Drawing.Point(55, 57);
             this.lbl_var_as_int32.Name = "lbl_var_as_int32";
-            this.lbl_var_as_int32.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int32.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_int32.TabIndex = 27;
             this.lbl_var_as_int32.Text = "0.00000";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(37, 122);
+            this.label19.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 57);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 12);
+            this.label19.Size = new System.Drawing.Size(38, 12);
             this.label19.TabIndex = 26;
             this.label19.Text = "Int32:";
             // 
             // lbl_var_as_uint16
             // 
-            this.lbl_var_as_uint16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_uint16.Location = new System.Drawing.Point(89, 80);
+            this.lbl_var_as_uint16.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_uint16.Location = new System.Drawing.Point(55, 15);
             this.lbl_var_as_uint16.Name = "lbl_var_as_uint16";
-            this.lbl_var_as_uint16.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_uint16.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_uint16.TabIndex = 25;
             this.lbl_var_as_uint16.Text = "0.00000";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(37, 80);
+            this.label16.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 15);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(36, 12);
+            this.label16.Size = new System.Drawing.Size(46, 12);
             this.label16.TabIndex = 24;
             this.label16.Text = "UInt16:";
             // 
             // lbl_var_as_double
             // 
-            this.lbl_var_as_double.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_double.Location = new System.Drawing.Point(89, 176);
+            this.lbl_var_as_double.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_double.Location = new System.Drawing.Point(55, 111);
             this.lbl_var_as_double.Name = "lbl_var_as_double";
-            this.lbl_var_as_double.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_double.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_double.TabIndex = 23;
             this.lbl_var_as_double.Text = "0.00000";
             // 
             // lbl_var_as_float
             // 
-            this.lbl_var_as_float.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_float.Location = new System.Drawing.Point(89, 162);
+            this.lbl_var_as_float.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_float.Location = new System.Drawing.Point(55, 97);
             this.lbl_var_as_float.Name = "lbl_var_as_float";
-            this.lbl_var_as_float.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_float.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_float.TabIndex = 22;
             this.lbl_var_as_float.Text = "0.00000";
             // 
             // lbl_var_as_int16
             // 
-            this.lbl_var_as_int16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_int16.Location = new System.Drawing.Point(89, 94);
+            this.lbl_var_as_int16.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_int16.Location = new System.Drawing.Point(55, 29);
             this.lbl_var_as_int16.Name = "lbl_var_as_int16";
-            this.lbl_var_as_int16.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_int16.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_int16.TabIndex = 21;
             this.lbl_var_as_int16.Text = "0.00000";
             // 
             // lbl_var_as_byte
             // 
-            this.lbl_var_as_byte.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_var_as_byte.Location = new System.Drawing.Point(89, 66);
+            this.lbl_var_as_byte.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_var_as_byte.Location = new System.Drawing.Point(55, 1);
             this.lbl_var_as_byte.Name = "lbl_var_as_byte";
-            this.lbl_var_as_byte.Size = new System.Drawing.Size(70, 10);
+            this.lbl_var_as_byte.Size = new System.Drawing.Size(93, 10);
             this.lbl_var_as_byte.TabIndex = 20;
             this.lbl_var_as_byte.Text = "0.00000";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(37, 176);
+            this.label13.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 111);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 12);
+            this.label13.Size = new System.Drawing.Size(44, 12);
             this.label13.TabIndex = 19;
             this.label13.Text = "Double:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(37, 162);
+            this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 97);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
+            this.label12.Size = new System.Drawing.Size(34, 12);
             this.label12.TabIndex = 18;
             this.label12.Text = "Float:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(37, 94);
+            this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 29);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.Size = new System.Drawing.Size(38, 12);
             this.label11.TabIndex = 17;
             this.label11.Text = "Int16:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(37, 66);
+            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 1);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 12);
+            this.label8.Size = new System.Drawing.Size(32, 12);
             this.label8.TabIndex = 16;
             this.label8.Text = "Byte:";
             // 
@@ -668,6 +662,7 @@
             this.lbl_var_address.Name = "lbl_var_address";
             this.lbl_var_address.Size = new System.Drawing.Size(162, 15);
             this.lbl_var_address.TabIndex = 15;
+            this.lbl_var_address.Text = "00000000";
             this.lbl_var_address.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbl_var_name
@@ -677,6 +672,7 @@
             this.lbl_var_name.Name = "lbl_var_name";
             this.lbl_var_name.Size = new System.Drawing.Size(162, 15);
             this.lbl_var_name.TabIndex = 14;
+            this.lbl_var_name.Text = "None";
             this.lbl_var_name.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label10
@@ -708,7 +704,34 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 15);
             this.label14.TabIndex = 11;
-            this.label14.Text = "1.2";
+            this.label14.Text = "1.3";
+            // 
+            // var_conversion_panel
+            // 
+            this.var_conversion_panel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.var_conversion_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.var_conversion_panel.Controls.Add(this.label8);
+            this.var_conversion_panel.Controls.Add(this.label16);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_uint64);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_uint16);
+            this.var_conversion_panel.Controls.Add(this.label11);
+            this.var_conversion_panel.Controls.Add(this.label19);
+            this.var_conversion_panel.Controls.Add(this.label17);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_double);
+            this.var_conversion_panel.Controls.Add(this.label12);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_int32);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_int64);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_float);
+            this.var_conversion_panel.Controls.Add(this.label13);
+            this.var_conversion_panel.Controls.Add(this.label_999);
+            this.var_conversion_panel.Controls.Add(this.label20);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_int16);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_byte);
+            this.var_conversion_panel.Controls.Add(this.lbl_var_as_uint32);
+            this.var_conversion_panel.Location = new System.Drawing.Point(16, 64);
+            this.var_conversion_panel.Name = "var_conversion_panel";
+            this.var_conversion_panel.Size = new System.Drawing.Size(153, 127);
+            this.var_conversion_panel.TabIndex = 0;
             // 
             // Form1
             // 
@@ -745,6 +768,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.var_conversion_panel.ResumeLayout(false);
+            this.var_conversion_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -815,6 +840,8 @@
         private System.Windows.Forms.Label lbl_var_as_int64;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbl_writing_to_process;
+        private System.Windows.Forms.ToolStripMenuItem detachFromProcessToolStripMenuItem;
+        private System.Windows.Forms.Panel var_conversion_panel;
 
     }
 }
