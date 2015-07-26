@@ -11,7 +11,7 @@ Here is a video demonstrating the program on an N64 emulator:<br>
 
 SCREENSHOTS:
 
-![Alt text](SCREENSHOTS/pm1.png?raw=true "Screenshot 1")
+![Alt text](SCREENSHOTS/pm0.png?raw=true "Screenshot 1")
 
 ![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")
 
