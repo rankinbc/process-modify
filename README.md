@@ -1,6 +1,6 @@
 # Process Modify
 
-Process Modify is an application that's useful for modifying variables of running processes.
+Process Modify is an application that manipulates variables of a process while it is running.
 
 Here is a video demonstrating the program on an N64 emulator:<br>
 [![ScreenShot](http://img.youtube.com/vi/SKN5lbidbXc/0.jpg)](https://www.youtube.com/watch?v=SKN5lbidbXc)
@@ -11,6 +11,10 @@ Here is a video demonstrating the program on an N64 emulator:<br>
 
 SCREENSHOTS:
 
-![Alt text](SCREENSHOTS/pm1.png?raw=true "Screenshot 2")
+![Alt text](SCREENSHOTS/pm1.png?raw=true "Screenshot 1")
+
+![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")
+
+![Alt text](SCREENSHOTS/pm3.png?raw=true "Screenshot 3")
 
 
