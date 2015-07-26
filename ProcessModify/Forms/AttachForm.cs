@@ -28,6 +28,7 @@ namespace ProcessModify
             tb_process.Focus(); 
         }
 
+
         private void ListProcesses()
         {
             for (int i = 0; i < processes.Length; i++)

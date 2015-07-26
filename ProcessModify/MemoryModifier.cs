@@ -32,10 +32,15 @@ namespace ProcessModify
 
         public MemoryModifier(Process process)
         {
+            setProcess(process);
+        }
+
+        public void setProcess(Process p)
+        {
             try
             {
                 //open process
-                this.process = process;
+                this.process = p;
                 processHandle = OpenProcess(PROCESS_WRITE, false, process.Id);
                 successfulLoad = true;
             }

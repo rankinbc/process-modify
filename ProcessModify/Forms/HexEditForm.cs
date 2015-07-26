@@ -106,16 +106,19 @@ namespace ProcessModify
 
             //highlight selected bytes
             if (tab_control.SelectedIndex == 0) //set value
-                highlightSelectedAddress(addr, ModAddress.dataTypeSizes[modAddress.type]);
+                highlightSelectedAddress(addr, ModAddress.dataTypeSizes[modAddress.type],true);
             else if (tab_control.SelectedIndex == 1) //randomize
-                highlightSelectedAddress(addr, Convert.ToInt32(tb_randomize_amount.Text));
+                highlightSelectedAddress(addr, Convert.ToInt32(tb_randomize_amount.Text),true);
         }
 
-        private void highlightSelectedAddress(Int32 address, int bytes) //rewrite this
+        private void highlightSelectedAddress(Int32 address, int bytes, bool resetList) //rewrite this
         {
+            if (resetList)
+            {
                 //unhighlight currently selected textboxes and clear list
                 highlightSelectedTextBoxes(false);
                 highlightedTextBoxes.Clear();
+            }
 
             if (startAddress + (hexRows.Length * 16) > selectedAddress &&
                 selectedAddress + bytes > startAddress) //if a selected byte is visible on the screen
@@ -260,7 +263,7 @@ namespace ProcessModify
         private void cb_type_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateModAddressType();
-            highlightSelectedAddress(modAddress.address,ModAddress.dataTypeSizes[modAddress.type]);
+            highlightSelectedAddress(modAddress.address,ModAddress.dataTypeSizes[modAddress.type], true);
         }
 
         void updateModAddressType()
@@ -290,7 +293,7 @@ namespace ProcessModify
         private void ScrollHexWindow(int dRows)
         {
             initForm(startAddress + dRows, false);
-            highlightSelectedAddress(startAddress + dRows, getAmountOfSelectedBytes());
+            highlightSelectedAddress(startAddress + dRows, getAmountOfSelectedBytes(),true);
         }
 
         private int getAmountOfSelectedBytes()
@@ -309,27 +312,54 @@ namespace ProcessModify
             }
             return -1;
         }
-  
-     
+
+        private void jumpToIndex(Int32 index)
+        {
+            selectedAddress = index;
+            initForm(selectedAddress, false);
+            highlightSelectedAddress(selectedAddress, 1,true);
+        }
+
+        private void RandomizeBytes(Int32 startAddress, int bytes, int min, int max)
+        {
+            Random random = new Random();
+            for (int i = 0; i < bytes; i++)
+            {
+                memoryModifier.WriteToAddress(startAddress + i, (byte)(random.Next(min, max + 1)));
+            }
+            
+        }
 
         private void btn_randomize_Click(object sender, EventArgs e)
         {
+            bool error = false;
+            Int32 startAddress = modAddress.address;
+            int totalBytes=-1, byteMin=-1, byteMax=-1, interval=-1, chunkSize=-1;
             try
             {
-                Random random = new Random();
-                int totalBytes = Convert.ToInt32(tb_randomize_amount.Text);
-                int byteMin = Convert.ToInt32(tb_random_min.Text);
-                int byteMax = Convert.ToInt32(tb_random_max.Text);
-
-                for (int i = 0; i < totalBytes; i++)
-                {
-                    memoryModifier.WriteToAddress(modAddress.address + i, (byte)(random.Next(byteMin, byteMax + 1)));
-                }
-                highlightSelectedAddress(modAddress.address, totalBytes);
+                totalBytes = Convert.ToInt32(tb_randomize_amount.Text);
+                byteMin = Convert.ToInt32(tb_random_min.Text);
+                byteMax = Convert.ToInt32(tb_random_max.Text);
+                interval = Convert.ToInt32(tb_corrupt_interval.Text);
+                chunkSize = Convert.ToInt32(tb_corrupt_chunk.Text);
             }
             catch
             {
                 MessageBox.Show("Invalid Input 2");
+                error = true;
+            }
+
+            if (!error)
+            {
+               
+                int byteIndex = modAddress.address;
+                while (byteIndex < startAddress + totalBytes)
+                {
+                     RandomizeBytes(byteIndex, chunkSize, byteMin, byteMax);
+                     highlightSelectedAddress(byteIndex, chunkSize, false);
+                     byteIndex += interval;
+                }
+
             }
         }
 
@@ -338,7 +368,7 @@ namespace ProcessModify
             try
             {
                 int total_bytes = Convert.ToInt32(tb_randomize_amount.Text);
-                highlightSelectedAddress(modAddress.address, total_bytes);
+                highlightSelectedAddress(modAddress.address, total_bytes, false);
             }
             catch
             {
@@ -356,7 +386,7 @@ namespace ProcessModify
 
         private void btn_jump_to_next_nonzero_Click(object sender, EventArgs e)
         {
-            int currentByteIndex = selectedAddress;
+            Int32 currentByteIndex = selectedAddress;
             byte currentByteValue = memoryModifier.ReadFromAddress(currentByteIndex,1)[0];
             while (currentByteValue == 0)
             {
@@ -366,18 +396,68 @@ namespace ProcessModify
 
             if (currentByteValue != 0)
             {
-                selectedAddress = currentByteIndex;
-                initForm(selectedAddress, false);
-                highlightSelectedAddress(selectedAddress, 1);
+                jumpToIndex(currentByteIndex);
+            }
+        }
+        
+        private void btn_jump_to_previous_nonzero_Click(object sender, EventArgs e)
+        {
+            Int32 currentByteIndex = selectedAddress;
+            byte currentByteValue = memoryModifier.ReadFromAddress(currentByteIndex, 1)[0];
+            while (currentByteValue == 0)
+            {
+                currentByteIndex--;
+                currentByteValue = memoryModifier.ReadFromAddress(currentByteIndex, 1)[0];
+            }
+
+            if (currentByteValue != 0)
+            {
+                jumpToIndex(currentByteIndex);
             }
         }
 
         private void btn_jump_by_Click(object sender, EventArgs e)
         {
-            int jumpToIndex = startAddress + Convert.ToInt32(tb_jump_by.Text);
+            Int32 jumpToIndex = startAddress + Convert.ToInt32(tb_jump_by.Text);
             selectedAddress = jumpToIndex;
             initForm(selectedAddress, false);
-            highlightSelectedAddress(selectedAddress, 1);
+            highlightSelectedAddress(selectedAddress, 1, true);
         }
+
+        private void HexEditForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 'r' || e.KeyChar == 'R')
+            {
+                btn_randomize.PerformClick();
+            }
+        }
+
+        private void btn_refresh_process_Click(object sender, EventArgs e)
+        {
+            form1Pointer.refreshProcess();
+        }
+
+        private void btn_random_corrupt_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+
+            int randomBytes = random.Next(1, 99999);
+            int randomInterval = random.Next(10, randomBytes / 4); 
+            int randomChunk = random.Next(1,randomInterval / 12);
+
+            tb_randomize_amount.Text = randomBytes.ToString();
+            tb_corrupt_chunk.Text = randomChunk.ToString();
+            tb_corrupt_interval.Text = randomInterval.ToString();
+            btn_randomize.PerformClick();
+        }
+
+        private void cb_corrupt_single_chunk_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = cb_corrupt_single_chunk.Checked;
+                tb_corrupt_chunk.Enabled = !isChecked;
+                tb_corrupt_interval.Enabled = !isChecked;
+        }
+
+       
     }
 }

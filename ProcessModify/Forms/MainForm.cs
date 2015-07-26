@@ -44,19 +44,27 @@ namespace ProcessModify
             var_conversion_panel.Enabled = false;
         }
 
-
+        public void refreshProcess()
+        {
+            if (attachedToProcess())
+            {
+                Process[] matchingProcesses = Process.GetProcessesByName(attachedProcess.ProcessName);
+                memoryModifier.setProcess(matchingProcesses[0]);
+                UpdateStatusLabels();
+            }
+        }
 
         private void ToggleWritingToProcess()
         {
             if (processWriteEnabled)
             {
                 processWriteEnabled = false;
-                btn_toggle_writing_to_process.Image = global::ProcessModify.Properties.Resources.disconnected;
+                menu_button_toggle_write.Image = global::ProcessModify.Properties.Resources.notwriting;
             }
             else
             {
                 processWriteEnabled = true;
-                btn_toggle_writing_to_process.Image = global::ProcessModify.Properties.Resources.connected;
+                menu_button_toggle_write.Image = global::ProcessModify.Properties.Resources.writing;
             }
         }
 
@@ -143,18 +151,18 @@ namespace ProcessModify
                     control.Invalidate();
                 }
             }
-        }
-
-      
+        }  
 
         private void UpdatePanels()
         {
             bool isAttached = attachedToProcess();
-            btn_toggle_writing_to_process.Enabled = isAttached;
+            if (isAttached)
+                menu_button_attach.Image = global::ProcessModify.Properties.Resources.connected;
+            menu_button_attach.Enabled = isAttached;
+            menu_button_toggle_write.Enabled = isAttached;
             btn_open_hex.Enabled = isAttached;
             var_conversion_panel.Enabled = isAttached;
 
-            UpdateWritingToProcessLabel();
             UpdateStatusLabels();
         }
 
@@ -339,33 +347,6 @@ namespace ProcessModify
             }
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.InitialDirectory = Environment.CurrentDirectory;
-            sfd.DefaultExt = ".xml";
-            sfd.Filter = "XML Files (*.xml)|*.xml";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                WriteToFile(sfd.FileName);
-            }
-        }
-
-        private void btn_load_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Environment.CurrentDirectory;
-            ofd.DefaultExt = ".xml";
-            ofd.Filter = "XML Files (*.xml)|*.xml";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                LoadFile(ofd.FileName);
-                UpdateFileLabel(ofd.SafeFileName);
-            }
-        }
-
-        
-
         private void btn_toggle_writing_to_process_Click(object sender, EventArgs e)
         {
             ToggleWritingToProcess();
@@ -387,13 +368,54 @@ namespace ProcessModify
             }
         }
 
+        private void menu_button_save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Environment.CurrentDirectory;
+            sfd.DefaultExt = ".xml";
+            sfd.Filter = "XML Files (*.xml)|*.xml";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                WriteToFile(sfd.FileName);
+            }
+        }
+
+        private void menu_button_open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = Environment.CurrentDirectory;
+            ofd.DefaultExt = ".xml";
+            ofd.Filter = "XML Files (*.xml)|*.xml";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                LoadFile(ofd.FileName);
+                UpdateFileLabel(ofd.SafeFileName);
+            }
+        }
+
         private void btn_remove_address_Click(object sender, EventArgs e) { RemoveModAddress(lb_mod_addresses.SelectedIndex); }
         private void btn_open_hex_Click(object sender, EventArgs e) { OpenHexEditWindow(); }
         private void menu_attach_Click(object sender, EventArgs e) { StartAttachFormDialog(); }
         private void lbl_attached_status_DoubleClick(object sender, EventArgs e)  { if (!attachedToProcess()) StartAttachFormDialog(); }
         private void detachFromProcessToolStripMenuItem_Click(object sender, EventArgs e) { DetachFromProcess(); }
         private void menu_quit_Click(object sender, EventArgs e) { Application.Exit(); }
-        private void menu_save_Click(object sender, EventArgs e) { btn_save.PerformClick(); }
-        private void menu_load_Click(object sender, EventArgs e) { btn_load.PerformClick(); }
+        private void menu_save_Click(object sender, EventArgs e) { menu_button_save.PerformClick(); }
+        private void menu_load_Click(object sender, EventArgs e) { menu_button_open.PerformClick(); }
+        private void menu_button_refresh_Click(object sender, EventArgs e) { refreshProcess(); }
+
+        private void menu_buttons_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void menu_button_toggle_write_Click_1(object sender, EventArgs e)
+        {
+            ToggleWritingToProcess(); UpdateWritingToProcessLabel(); 
+        }
+
+        private void menu_button_attach_Click(object sender, EventArgs e)
+        {
+            StartAttachFormDialog(); 
+        }
     }
 }

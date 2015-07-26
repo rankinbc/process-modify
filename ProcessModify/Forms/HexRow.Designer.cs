@@ -60,6 +60,7 @@
             // tb2
             // 
             this.tb2.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb2.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb2.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb2.ForeColor = System.Drawing.Color.Black;
@@ -75,6 +76,7 @@
             // tb1
             // 
             this.tb1.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb1.ForeColor = System.Drawing.Color.Black;
@@ -90,6 +92,7 @@
             // tb0
             // 
             this.tb0.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb0.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb0.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb0.ForeColor = System.Drawing.Color.Black;
@@ -106,6 +109,7 @@
             // tb5
             // 
             this.tb5.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb5.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb5.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb5.ForeColor = System.Drawing.Color.Black;
@@ -121,6 +125,7 @@
             // tb4
             // 
             this.tb4.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb4.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb4.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb4.ForeColor = System.Drawing.Color.Black;
@@ -136,6 +141,7 @@
             // tb3
             // 
             this.tb3.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb3.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb3.ForeColor = System.Drawing.Color.Black;
@@ -151,6 +157,7 @@
             // tbB
             // 
             this.tbB.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbB.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbB.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbB.ForeColor = System.Drawing.Color.Black;
@@ -166,6 +173,7 @@
             // tbA
             // 
             this.tbA.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbA.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbA.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbA.ForeColor = System.Drawing.Color.Black;
@@ -181,6 +189,7 @@
             // tb9
             // 
             this.tb9.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb9.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb9.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb9.ForeColor = System.Drawing.Color.Black;
@@ -196,6 +205,7 @@
             // tb8
             // 
             this.tb8.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb8.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb8.ForeColor = System.Drawing.Color.Black;
@@ -211,6 +221,7 @@
             // tb7
             // 
             this.tb7.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb7.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb7.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb7.ForeColor = System.Drawing.Color.Black;
@@ -226,6 +237,7 @@
             // tb6
             // 
             this.tb6.BackColor = System.Drawing.Color.Gainsboro;
+            this.tb6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb6.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb6.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb6.ForeColor = System.Drawing.Color.Black;
@@ -241,6 +253,7 @@
             // tbF
             // 
             this.tbF.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbF.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbF.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbF.ForeColor = System.Drawing.Color.Black;
@@ -256,6 +269,7 @@
             // tbE
             // 
             this.tbE.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbE.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbE.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbE.ForeColor = System.Drawing.Color.Black;
@@ -271,6 +285,7 @@
             // tbD
             // 
             this.tbD.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbD.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbD.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbD.ForeColor = System.Drawing.Color.Black;
@@ -286,6 +301,7 @@
             // tbC
             // 
             this.tbC.BackColor = System.Drawing.Color.Gainsboro;
+            this.tbC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbC.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbC.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbC.ForeColor = System.Drawing.Color.Black;

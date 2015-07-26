@@ -156,6 +156,9 @@
     <None Include="images\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\refresh.png" />
+    <None Include="images\notwriting.png" />
+    <None Include="images\writing.png" />
     <Content Include="process_modify_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
