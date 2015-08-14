@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-
 namespace ProcessModify
 {
     public class MemoryModifier
     {
+        private Process process;
+        private IntPtr processHandle;
+
+        private const int PROCESS_READ = 0x0010;
+        private const int PROCESS_WRITE = 0x1F0FFF;
+        
+        public bool successfulLoad { get; set; } 
+
         [DllImport("kernel32.dll")]
         public static extern IntPtr OpenProcess(int dwDesiredAccess,
                bool bInheritHandle, int dwProcessId);
@@ -23,13 +30,6 @@ namespace ProcessModify
         public static extern bool ReadProcessMemory(int hProcess,
           int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
-        const int PROCESS_READ = 0x0010;
-        const int PROCESS_WRITE = 0x1F0FFF;
-
-        Process process;
-        IntPtr processHandle;
-        bool successfulLoad;
-
         public MemoryModifier(Process process)
         {
             setProcess(process);
@@ -39,7 +39,7 @@ namespace ProcessModify
         {
             try
             {
-                //open process
+                //Open process
                 this.process = p;
                 processHandle = OpenProcess(PROCESS_WRITE, false, process.Id);
                 successfulLoad = true;
@@ -50,9 +50,8 @@ namespace ProcessModify
             }
         }
 
-        public bool getSuccessfulLoad() { return successfulLoad; }
 
-        //Write byte
+        //Write single byte
         public void WriteToAddress(Int32 address, byte value)
         {
             if (successfulLoad)

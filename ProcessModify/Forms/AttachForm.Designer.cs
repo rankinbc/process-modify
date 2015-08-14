@@ -80,7 +80,6 @@
             this.btn_select_mupen.Name = "btn_select_mupen";
             this.btn_select_mupen.Size = new System.Drawing.Size(16, 26);
             this.btn_select_mupen.TabIndex = 3;
-            this.btn_select_mupen.Text = "M";
             this.btn_select_mupen.UseVisualStyleBackColor = false;
             this.btn_select_mupen.Click += new System.EventHandler(this.btn_select_mupen_Click);
             // 

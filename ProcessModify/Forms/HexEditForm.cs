@@ -434,7 +434,7 @@ namespace ProcessModify
 
         private void btn_refresh_process_Click(object sender, EventArgs e)
         {
-            form1Pointer.refreshProcess();
+            form1Pointer.RefreshProcess();
         }
 
         private void btn_random_corrupt_Click(object sender, EventArgs e)

@@ -352,7 +352,6 @@
             this.menu_buttons.Size = new System.Drawing.Size(319, 27);
             this.menu_buttons.TabIndex = 25;
             this.menu_buttons.Text = "menuStrip2";
-            this.menu_buttons.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menu_buttons_ItemClicked);
             // 
             // menu_button_save
             // 

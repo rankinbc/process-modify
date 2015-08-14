@@ -15,12 +15,12 @@ namespace ProcessModify
 {
     public partial class MainForm : Form
     {
-        Process attachedProcess;
-        MemoryModifier memoryModifier;
-        List<ModAddressControl> modAddressControls;
+        private Process attachedProcess;
+        private MemoryModifier memoryModifier;
+        private List<ModAddressControl> modAddressControls;
 
-        bool processWriteEnabled;
-        bool processReadEnabled;
+        private bool processWriteEnabled;
+        private bool processReadEnabled;
 
         public MainForm()
         {
@@ -32,8 +32,6 @@ namespace ProcessModify
             Initialize();
         }
 
-        private bool attachedToProcess() { return (attachedProcess != null); }
-
         private void Initialize()
         {
             modAddressControls = new List<ModAddressControl>();
@@ -42,16 +40,6 @@ namespace ProcessModify
             processWriteEnabled = false;
             processReadEnabled = false;
             var_conversion_panel.Enabled = false;
-        }
-
-        public void refreshProcess()
-        {
-            if (attachedToProcess())
-            {
-                Process[] matchingProcesses = Process.GetProcessesByName(attachedProcess.ProcessName);
-                memoryModifier.setProcess(matchingProcesses[0]);
-                UpdateStatusLabels();
-            }
         }
 
         private void ToggleWritingToProcess()
@@ -81,6 +69,7 @@ namespace ProcessModify
 
         private void RemoveModAddress(int index)
         {
+            //Removes selected address from list
             if (index >= 0)
             {
                 for (int i = index + 1; i < modAddressControls.Count; i++)
@@ -130,7 +119,7 @@ namespace ProcessModify
             lbl_var_as_double.Text = d.ToString();
         }
 
-        //smooths panel scrolling and removes flashing
+        //Smooths panel scrolling and removes flashing
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
         private void panel_mod_addresses_Scroll(object sender, ScrollEventArgs e)
@@ -165,7 +154,6 @@ namespace ProcessModify
 
             UpdateStatusLabels();
         }
-
 
         private void UpdateStatusLabels()
         {
@@ -207,9 +195,10 @@ namespace ProcessModify
         }
 
         private void LoadFile(string path)
-        {
+        { 
             try
-            {
+            {  
+                //Loads address list and attributes from file
                 XDocument xml = XDocument.Load(path);
                 int ununused = xml.Descendants("Addresses").Elements().Count();
                 foreach (XElement setting in xml.Descendants("Address"))
@@ -232,7 +221,7 @@ namespace ProcessModify
 
         private void WriteToFile(string path)
         {
-            //saves address list with attributes
+            //Saves address list with attributes to file
             XElement xmlDocument = new XElement("Addresses");
             foreach (ModAddressControl m in modAddressControls)
             {
@@ -281,8 +270,20 @@ namespace ProcessModify
             }
         }
 
+        public void RefreshProcess()
+        {
+            if (attachedToProcess())
+            {
+                //Updates PID - for when program crashes and is reopened
+                Process[] matchingProcesses = Process.GetProcessesByName(attachedProcess.ProcessName);
+                memoryModifier.setProcess(matchingProcesses[0]);
+                UpdateStatusLabels();
+            }
+        }
+
         private void OpenHexEditWindow()
         {
+            //Opens HexEdit window preset at current selected address, if no address is selected, defaults to 0x00
             HexEditForm hexEditForm;
             if (lb_mod_addresses.SelectedIndex != -1)
             {
@@ -299,7 +300,7 @@ namespace ProcessModify
         {
             if (processReadEnabled)
             {
-                //update labels with data read from process
+                //Update value labels with values read from process
                 foreach (ModAddressControl m in modAddressControls)
                 {
                     m.UpdateActualValueLabel(memoryModifier);
@@ -308,7 +309,7 @@ namespace ProcessModify
 
             if (processWriteEnabled)
             {
-                //write each value to process
+                //Write each value to corresponsing memory address of the process
                 foreach (ModAddressControl m in modAddressControls)
                 {
                     if (m.getIsActive())
@@ -393,6 +394,7 @@ namespace ProcessModify
             }
         }
 
+        private bool attachedToProcess() { return (attachedProcess != null); }
         private void btn_remove_address_Click(object sender, EventArgs e) { RemoveModAddress(lb_mod_addresses.SelectedIndex); }
         private void btn_open_hex_Click(object sender, EventArgs e) { OpenHexEditWindow(); }
         private void menu_attach_Click(object sender, EventArgs e) { StartAttachFormDialog(); }
@@ -401,21 +403,8 @@ namespace ProcessModify
         private void menu_quit_Click(object sender, EventArgs e) { Application.Exit(); }
         private void menu_save_Click(object sender, EventArgs e) { menu_button_save.PerformClick(); }
         private void menu_load_Click(object sender, EventArgs e) { menu_button_open.PerformClick(); }
-        private void menu_button_refresh_Click(object sender, EventArgs e) { refreshProcess(); }
-
-        private void menu_buttons_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void menu_button_toggle_write_Click_1(object sender, EventArgs e)
-        {
-            ToggleWritingToProcess(); UpdateWritingToProcessLabel(); 
-        }
-
-        private void menu_button_attach_Click(object sender, EventArgs e)
-        {
-            StartAttachFormDialog(); 
-        }
+        private void menu_button_refresh_Click(object sender, EventArgs e) { RefreshProcess(); }
+        private void menu_button_toggle_write_Click_1(object sender, EventArgs e) { ToggleWritingToProcess(); UpdateWritingToProcessLabel(); }
+        private void menu_button_attach_Click(object sender, EventArgs e) { StartAttachFormDialog(); }
     }
 }

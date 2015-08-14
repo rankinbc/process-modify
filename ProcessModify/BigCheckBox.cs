@@ -1,6 +1,4 @@
 ﻿//http://forum.codecall.net/topic/73939-how-to-resize-a-checkbox-using-the-net-framework/
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Windows.Forms;
 using System.Drawing;
-//http://forum.codecall.net/topic/73939-how-to-resize-a-checkbox-using-the-net-framework/
+
 namespace ProcessModify
 {
     public class BigCheckBox : CheckBox
@@ -41,5 +39,4 @@ namespace ProcessModify
 			    ControlPaint.DrawCheckBox(e.Graphics, rect, this.Checked ? ButtonState.Checked : ButtonState.Normal);
 		    }
 	    }
-
 }

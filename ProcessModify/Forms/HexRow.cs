@@ -24,7 +24,7 @@ namespace ProcessModify
             parentForm = form;
             sizeY = 22;
         }
-       
+
         private void HexRow_Load(object sender, EventArgs e)
         {
             string startAddressString = startAddress.ToString("X8");
@@ -39,7 +39,6 @@ namespace ProcessModify
             startAddressString = startAddressString.Remove(startAddressString.Length - 1, 1);
             lbl_start_address.Text = startAddressString;
         }
-
 
         public void updateTextBoxes(byte[] b)
         {
@@ -65,7 +64,7 @@ namespace ProcessModify
         {
             switch (offset)
             {
-                case 0 : return tb0;
+                case 0: return tb0;
                 case 1: return tb1;
                 case 2: return tb2;
                 case 3: return tb3;
@@ -85,85 +84,22 @@ namespace ProcessModify
             }
         }
 
-        private void tb0_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 0);
-        }
-
-        private void tb1_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 1);
-        }
-
-        private void tb2_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 2);
-        }
-
-        private void tb3_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress( startAddress + 3);
-        }
-
-        private void tb4_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 4);
-        }
-
-        private void tb5_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(  startAddress + 5);
-        }
-
-        private void tb6_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(  startAddress + 6);
-        }
-
-        private void tb7_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(  startAddress + 7);
-        }
-
-        private void tb8_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(  startAddress + 8);
-        }
-
-        private void tb9_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress( startAddress + 9);
-        }
-
-        private void tbA_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress( startAddress + 10);
-        }
-
-        private void tbB_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress( startAddress + 11);
-        }
-
-        private void tbC_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress( startAddress + 12);
-        }
-
-        private void tbD_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 13);
-        }
-
-        private void tbE_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 14);
-        }
-
-        private void tbF_Click(object sender, EventArgs e)
-        {
-            parentForm.changeSelectedAddress(startAddress + 15);
-        }
+        private void tb0_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 0); }
+        private void tb1_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 1); }
+        private void tb2_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 2); }
+        private void tb3_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 3); }
+        private void tb4_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 4); }
+        private void tb5_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 5); }
+        private void tb6_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 6); }
+        private void tb7_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 7); }
+        private void tb8_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 8); }
+        private void tb9_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 9); }
+        private void tbA_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 10); }
+        private void tbB_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 11); }
+        private void tbC_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 12); }
+        private void tbD_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 13); }
+        private void tbE_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 14); }
+        private void tbF_Click(object sender, EventArgs e) { parentForm.changeSelectedAddress(startAddress + 15); }
 
 
     }
