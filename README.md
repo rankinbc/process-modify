@@ -1,5 +1,3 @@
-# Process Modify
-
 Process Modify is an application that manipulates RAM belonging to a process during runtime.
 
 * You can store and name variables located at a specific memory addresses and modify them to make changes in the attached process.
