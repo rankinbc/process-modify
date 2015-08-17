@@ -9,7 +9,7 @@ Finally, you can corrupt memory by randomizing values in a section of RAM. The m
 Here is are 2 videos demonstrating the program on an N64 emulator:<br><br>
 
 **Process Modify(2:45) (no sound)**<br>
-[0.00](http://www.youtube.com/watch?v=SKN5lbidbXc)0:00 - Editing stored values <br>
+[0.00](http://www.youtube.com/watch?v=SKN5lbidbXc) - Editing stored values <br>
 [1:18](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m18s) - Using the hex editor to edit unknown variables <br>
 [1:57](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m57s) - Corrupting memory in the hex editor <br>
 [![ScreenShot](http://img.youtube.com/vi/SKN5lbidbXc/0.jpg)](https://www.youtube.com/watch?v=SKN5lbidbXc)
