@@ -30,11 +30,11 @@ Process Modify is an application that manipulates RAM belonging to a process dur
 <br>
 ###Screenshots
 
-*Editing stored values*
+* *Editing stored values*
 ![Alt text](SCREENSHOTS/pm0.png?raw=true "Screenshot 1")<br>
 
-*Using the hex editor to edit single variables*
+* *Using the hex editor to edit single variables*
 ![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")<br>
 
-*Corrupting chunks of memory*
+* *Corrupting chunks of memory*
 ![Alt text](SCREENSHOTS/pm3.png?raw=true "Screenshot 3")
