@@ -14,7 +14,7 @@ Here is are 2 videos demonstrating the program on an N64 emulator:<br><br>
 [1:57](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m57s) - Corrupting memory in the hex editor <br>
 [![ScreenShot](http://img.youtube.com/vi/SKN5lbidbXc/0.jpg)](https://www.youtube.com/watch?v=SKN5lbidbXc)
 
-**Super Mario 64 ROM Corruption(3:01) (no sound)**<br>
+**Super Mario 64 Memory Corruption(3:01) (no sound)**<br>
 [![ScreenShot](http://img.youtube.com/vi/AclNAJOJo1o/0.jpg)](https://www.youtube.com/watch?v=AclNAJOJo1o)
 
 <iframe width="854" height="510" src="" frameborder="0" allowfullscreen></iframe>
