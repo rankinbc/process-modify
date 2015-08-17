@@ -7,7 +7,8 @@ Process Modify is an application that manipulates RAM belonging to a process dur
 * Finally, you can corrupt memory by randomizing values in a section of RAM. The memory locations that are randomized are determined by an interval and chunk size. This can yield interesting results in the behavior of the attached process.
 
 <br>
-Here are 2 videos demonstrating the program on an N64 emulator:<br>
+##Videos
+*Using Process Modify with an N64 emulator:<br>
 
 * **Process Modify(2:45) (no sound)**<br>
 [0:00](http://www.youtube.com/watch?v=SKN5lbidbXc) - Editing stored values <br>
@@ -20,12 +21,12 @@ Here are 2 videos demonstrating the program on an N64 emulator:<br>
 
 <iframe width="854" height="510" src="" frameborder="0" allowfullscreen></iframe>
 
-SCREENSHOTS:
-
+##Screenshots
+*Editing stored values*
 ![Alt text](SCREENSHOTS/pm0.png?raw=true "Screenshot 1")
-
+*Using the hex editor to edit single variables*
 ![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")
-
+*Corrupting chunks of memory*
 ![Alt text](SCREENSHOTS/pm3.png?raw=true "Screenshot 3")
 
 
