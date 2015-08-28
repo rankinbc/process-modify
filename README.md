@@ -32,7 +32,7 @@ Process Modify is an application that manipulates RAM belonging to a process dur
 * *Modifying stored values*
 ![Alt text](SCREENSHOTS/pm0.png?raw=true "Screenshot 1")<br>
 
-* *Modifying unknwon*
+* *Modifying unknown values*
 ![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")<br>
 
 * *Modifying chunks of memory*
