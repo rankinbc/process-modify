@@ -17,9 +17,9 @@ Process Modify is an application that manipulates RAM belonging to a process dur
 *Using Process Modify with an N64 emulator:*
 <br>
 * **Process Modify(2:45) (no sound)**<br>
-[0:00](http://www.youtube.com/watch?v=SKN5lbidbXc) - Editing stored values <br>
-[1:19](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m19s) - Using the hex editor to edit unknown variables <br>
-[1:59](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m59s) - Corrupting memory in the hex editor <br>
+[0:00](http://www.youtube.com/watch?v=SKN5lbidbXc) - Modifying stored values <br>
+[1:19](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m19s) - Modifying unknown values  <br>
+[1:59](http://www.youtube.com/watch?v=SKN5lbidbXc&t=1m59s) - Modifying chunks of memory <br>
 [![ScreenShot](http://img.youtube.com/vi/SKN5lbidbXc/0.jpg)](https://www.youtube.com/watch?v=SKN5lbidbXc)
 
 * **Super Mario 64 Memory Corruption(3:01) (no sound)**<br>
@@ -29,11 +29,11 @@ Process Modify is an application that manipulates RAM belonging to a process dur
 <br>
 ###Screenshots
 
-* *Editing stored values*
+* *Modifying stored values*
 ![Alt text](SCREENSHOTS/pm0.png?raw=true "Screenshot 1")<br>
 
-* *Using the hex editor to edit single variables*
+* *Modifying unknwon*
 ![Alt text](SCREENSHOTS/pm2.png?raw=true "Screenshot 2")<br>
 
-* *Corrupting chunks of memory*
+* *Modifying chunks of memory*
 ![Alt text](SCREENSHOTS/pm3.png?raw=true "Screenshot 3")
