@@ -1,8 +1,8 @@
 **Process Modify**
 <br>
-Process Modify is an application that allow convenient editing of a selected process's RAM.  You can observe the effects on a process as you change its variables gradually.
+Process Modify is an application that allows convenient editing of a selected process's RAM.  You can observe the effects on a process as you change its variables gradually.
 <br><br>
-Its main use for me was learning about the inner workings N64 ROMs, but it could be useful for other things.
+Its main use for me was learning about the inner workings of N64 ROMs, but it could be useful for other things.
 
 Some Videos and Screenshots:<br>
 Video (2:45)<br>
